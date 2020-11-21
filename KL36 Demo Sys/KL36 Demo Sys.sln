@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1231
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KL36 Demo Sys", "KL36 Demo Sys\KL36 Demo Sys.csproj", "{B8E9ABE9-FE9C-43EB-8CF6-4805E4B6B48F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KL36.Demo.Sys", "KL36 Demo Sys\KL36.Demo.Sys.csproj", "{B8E9ABE9-FE9C-43EB-8CF6-4805E4B6B48F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
