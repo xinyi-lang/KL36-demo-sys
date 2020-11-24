@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KL36_Demo_Sys._04_Control;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,6 +25,12 @@ namespace KL36_Demo_Sys
             {
                 this.Dispose();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UC_SelectUart usu = new UC_SelectUart();
+            panel2.Controls.Add(usu);
         }
     }
 }
