@@ -1,4 +1,4 @@
-﻿namespace KL36_2
+﻿namespace KL36_Demo_Sys
 {
     /// --------------------------------------------------------------------
     /// <summary>                                                           
@@ -14,6 +14,7 @@
         public static byte[] g_SendByteLast;    //全局变量，存放最后的数据
         public static string g_SCIComNum;       //全局变量，存放选择的串口号
         public static int g_SCIBaudRate;        //全局变量，存放选择的波特率
+        public static bool g_Uflag;
         
     }
 }

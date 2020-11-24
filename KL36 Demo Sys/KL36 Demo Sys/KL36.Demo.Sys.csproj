@@ -59,6 +59,7 @@
     <Compile Include="02-From\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="03-Function\EMUART.cs" />
     <Compile Include="03-Function\PublicVar.cs" />
     <Compile Include="03-Function\SCI.cs">
       <SubType>Component</SubType>

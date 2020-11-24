@@ -22,7 +22,7 @@ using System.Windows.Forms;
 /// --------------------------------------------------------------------
 
 
-namespace KL36_2
+namespace KL36_Demo_Sys
 {
 
     public class SCI : System.IO.Ports.SerialPort
@@ -109,16 +109,79 @@ namespace KL36_2
         ///-----------------------------------------------------------------
         public bool SCISendData(ref byte[] SendArray)
         {
-            if (!this.IsOpen){
+            if (!this.IsOpen)
+            {
                 return false;
             }
-            try{
+            try
+            {
                 this.Write(SendArray, 0, SendArray.Length);//通过串口发送出去
-            }catch{
+            }
+            catch
+            {
                 return false;//产生错误,返回false
             }
             return true;
         }
+
+
+        ///-----------------------------------------------------------------
+        /// <summary>                                                       
+        /// 功    能:串口发送帧格式数据                                           
+        /// 内部调用:无                                                     
+        /// </summary>                                                      
+        /// <param name="SendArray">存放要发送的数据,字节数组</param>      
+        /// <returns>返回一个布尔值,当发送成功后,返回True;                 
+        ///          否则返回False</returns>                                
+        ///-----------------------------------------------------------------
+        public bool SCISendFrameData(ref byte[] SendArray)
+        {
+            if (!this.IsOpen)
+            {
+                return false;
+            }
+            try
+            {
+                byte[] sendData = new byte[SendArray.Length + 8];
+                int index = 0;
+                //帧头
+                sendData[index++] = emuartFrameHead[0];
+                sendData[index++] = emuartFrameHead[1];
+                //数据长度
+                sendData[index++] = (byte)(SendArray.Length >> 8);
+                sendData[index++] = (byte)(SendArray.Length);
+                //数据
+                if (SendArray.Length > 0)
+                    Array.Copy(SendArray, 0, sendData, index, SendArray.Length);
+                index += SendArray.Length;
+                //CRC校验
+                UInt16 temp16 = emuart_crc16(SendArray, SendArray.Length);
+                sendData[index++] = (byte)(temp16 >> 8);
+                sendData[index++] = (byte)(temp16);
+                //发送帧尾
+                sendData[index++] = emuartFrameTail[0];
+                sendData[index++] = emuartFrameTail[1];
+
+
+                this.Write(sendData, 0, sendData.Length);//通过串口发送出去
+            }
+            catch
+            {
+                return false;//产生错误,返回false
+            }
+            return true;
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -147,17 +210,18 @@ namespace KL36_2
             //一帧收完后统一转码处理，防止中文出现乱码
             while (lenPre < lenNow)
             {
-
                 System.Threading.Thread.Sleep(Convert.ToInt32(Math.Ceiling(2.0*9*1000/(this.BaudRate)) ));
                 lenPre = lenNow;
-                lenNow = this.BytesToRead;//获取接收缓冲区中的字节数
-            
+                lenNow = this.BytesToRead;//获取接收缓冲区中的字节数       
             }
 
-            try{
+            try
+            {
                 ReceiveArray = new byte[lenNow];
                 this.Read(ReceiveArray, 0, lenNow);//从接收缓冲区中读取数据，将其放入ReceiveArray中,并清除缓冲区       
-            }catch{
+            }
+            catch
+            {
                 return false;//产生错误,返回false
             }
             return true;//正确，返回true
@@ -184,9 +248,37 @@ namespace KL36_2
         /// <returns>串口号数组 </returns>
         /// ------------------------------------------------------------------------------
         public static string[] SCIGetPorts()
-        {
-            
+        {          
             return GetPortNames();
+        }
+
+        private byte[] emuartFrameHead = new byte[2] { 0xa5, 0x06 };
+        private byte[] emuartFrameTail = new byte[2] { 0xb6, 0x07 };
+
+        //=====================================================================
+        //函数名称：emuart_crc16
+        //功能概要：将数据进行16位的CRC校验，返回校验后的结果值
+        //参数说明：ptr:需要校验的数据缓存区
+        //                len:需要检验的数据长度
+        //函数返回：计算得到的校验值
+        //=====================================================================
+        UInt16 emuart_crc16(byte[] ptr, int len)
+        {
+            UInt16 i, j, tmp, crc16;
+
+            crc16 = 0xffff;
+            for (i = 0; i < len; i++)
+            {
+                crc16 = (UInt16)(ptr[i] ^ crc16);
+                for (j = 0; j < 8; j++)
+                {
+                    tmp = (UInt16)(crc16 & 0x0001);
+                    crc16 = (UInt16)(crc16 >> 1);
+                    if (tmp != 0)
+                        crc16 = (UInt16)(crc16 ^ 0xa001);
+                }
+            }
+            return crc16;
         }
     }
 }

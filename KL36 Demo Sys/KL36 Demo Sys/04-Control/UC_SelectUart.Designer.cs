@@ -40,26 +40,29 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(71, 28);
+            this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(44, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 15);
+            this.label1.Size = new System.Drawing.Size(259, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "1.开始扫描串口...";
+            this.label1.Text = "开始扫描串口,准备连接设备";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.Location = new System.Drawing.Point(88, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 15);
+            this.label2.Size = new System.Drawing.Size(95, 19);
             this.label2.TabIndex = 3;
             this.label2.Text = "扫描结果:";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(87, 173);
+            this.button1.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Location = new System.Drawing.Point(92, 212);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(68, 35);
             this.button1.TabIndex = 0;
             this.button1.Text = "确认";
             this.button1.UseVisualStyleBackColor = true;
@@ -69,22 +72,24 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(88, 199);
+            this.label3.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(61, 260);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 15);
+            this.label3.Size = new System.Drawing.Size(0, 19);
             this.label3.TabIndex = 5;
             // 
             // comboBox1
             // 
+            this.comboBox1.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "9600",
             "19200",
             "38400",
             "115200"});
-            this.comboBox1.Location = new System.Drawing.Point(87, 144);
+            this.comboBox1.Location = new System.Drawing.Point(92, 180);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
+            this.comboBox1.Size = new System.Drawing.Size(136, 26);
             this.comboBox1.TabIndex = 6;
             this.comboBox1.Text = "请选择波特率";
             this.comboBox1.Visible = false;
@@ -100,7 +105,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "UC_SelectUart";
-            this.Size = new System.Drawing.Size(500, 252);
+            this.Size = new System.Drawing.Size(374, 507);
             this.Load += new System.EventHandler(this.UC_SelectUart_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

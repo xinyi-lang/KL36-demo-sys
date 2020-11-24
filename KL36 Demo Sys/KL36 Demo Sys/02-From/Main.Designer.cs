@@ -1,6 +1,6 @@
 ﻿namespace KL36_Demo_Sys
 {
-    partial class Form1
+    partial class FrmMain
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -354,12 +354,12 @@
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(43, 211);
+            this.panel2.Location = new System.Drawing.Point(43, 227);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(606, 333);
+            this.panel2.Size = new System.Drawing.Size(832, 386);
             this.panel2.TabIndex = 4;
             // 
-            // Form1
+            // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -369,8 +369,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "FrmMain";
             this.Text = "嵌入式实验演示系统  --基于KL36";
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);

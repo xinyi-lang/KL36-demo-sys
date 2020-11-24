@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using KL36_2;
+using System.Threading;
+using KL36_Demo_Sys;
 
 namespace KL36_Demo_Sys._04_Control
 {
@@ -15,22 +16,73 @@ namespace KL36_Demo_Sys._04_Control
     {
         SCI sci;
         string[] SCIPorts;
+        byte[] recvData = new byte[100];
+        byte[] userShake = { (byte)11, (byte)'a', (byte)'u', (byte)'a', (byte)'r', (byte)'t', (byte)'?' }; //与终端握手帧数据
         
+
         public UC_SelectUart()
         {
             InitializeComponent();
             SCIPorts = SCI.SCIGetPorts();
         }
-        
+        public void FindSCI()
+        {
+            for (int i = 0; i < SCIPorts.Length; i++)
+            {
+                sci = new SCI(SCIPorts[i], 115200);
+                if (sci.SCIOpen())
+                {
+                    sci.SCISendFrameData(ref userShake);
+
+                    Thread.Sleep(500);
+                    if (sci.SCIReceiveData(ref recvData))
+                    {
+
+                        if (recvData.Length == 0 || !System.Text.Encoding.Default.GetString(recvData).Contains("I am an uart"))
+                        {
+
+                            sci.Close();
+                            continue;
+                        }
+                        if (System.Text.Encoding.Default.GetString(recvData).Contains("I am an uart"))   //记录UART_User串口的Com号
+                        {
+
+                            PublicVar.g_SCIComNum = SCIPorts[i];
+                            sci.Close();
+                            break;                                                              //找到UART_User串口后，跳出循环
+                        }
+                    }
+                }
+            }
+        }
+
         private void UC_SelectUart_Load(object sender, EventArgs e)
         {
             label2.Text += "已找到" + Convert.ToString(SCIPorts.Length) + "个串口\n";
             for (int i = 0; i < SCIPorts.Length; i++)
             {
-                label2.Text +="         "+ SCIPorts[i]+"\n";
+                label2.Text += "          " + SCIPorts[i]+"\n";
             }
-            label2.Text += "开始打开串口...\n已自动选择用户串口："+SCIPorts[0];
-            comboBox1.Visible = true;
+            if (SCIPorts.Length >=1)
+            {
+                FindSCI();
+                label2.Text += "已找到设备\n";
+            }
+            else
+            {
+                MessageBox.Show("无可用串口，请检查串口是否连接好");
+            }
+            if (PublicVar.g_SCIComNum ==null)
+            {
+                MessageBox.Show("已找到设备，但无用户串口，请连接");
+                
+            }
+            else
+            {
+                label2.Text += "开始打开串口...\n已自动选择用户串口：" + PublicVar.g_SCIComNum;
+                comboBox1.Visible = true;
+            }
+            
         }
 
 
@@ -39,19 +91,24 @@ namespace KL36_Demo_Sys._04_Control
 
             if (this.comboBox1.Text != "")
             {
-                PublicVar.g_SCIComNum = this.SCIPorts[0];
+
                 PublicVar.g_SCIBaudRate = int.Parse(this.comboBox1.Text);
                 button1.Visible = true;
             }
             sci = new SCI(PublicVar.g_SCIComNum, PublicVar.g_SCIBaudRate);
             if (sci.SCIOpen())//串口打开成功
             {
-                this.label3.Text = "打开成功";
+                this.label3.Text = "打开成功\n";
+                this.label3.Text+= "设备已连接，开始实验吧！";
+                PublicVar.g_Uflag = true;
+
             }
             else
             {
                 this.label3.Text = "打开失败";
+                PublicVar.g_Uflag = false;
             }
+            
         }
 
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)

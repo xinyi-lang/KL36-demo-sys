@@ -1,5 +1,4 @@
 G:\KL36\KL36 demo sys\KL36 Demo Sys\obj\Debug\KL36.Demo.Sys.csprojAssemblyReference.cache
-G:\KL36\KL36 demo sys\KL36 Demo Sys\obj\Debug\KL36_Demo_Sys.Form1.resources
 G:\KL36\KL36 demo sys\KL36 Demo Sys\obj\Debug\KL36_Demo_Sys.Properties.Resources.resources
 G:\KL36\KL36 demo sys\KL36 Demo Sys\obj\Debug\KL36.Demo.Sys.csproj.GenerateResource.cache
 G:\KL36\KL36 demo sys\KL36 Demo Sys\obj\Debug\KL36.Demo.Sys.csproj.CoreCompileInputs.cache
@@ -9,3 +8,4 @@ G:\KL36\KL36 Demo Sys\KL36 Demo Sys\bin\Debug\KL36.Demo.Sys.pdb
 G:\KL36\KL36 Demo Sys\KL36 Demo Sys\obj\Debug\KL36_Demo_Sys._04_Control.UC_SelectUart.resources
 G:\KL36\KL36 Demo Sys\KL36 Demo Sys\obj\Debug\KL36.Demo.Sys.exe
 G:\KL36\KL36 Demo Sys\KL36 Demo Sys\obj\Debug\KL36.Demo.Sys.pdb
+G:\KL36\KL36 Demo Sys\KL36 Demo Sys\obj\Debug\KL36_Demo_Sys.FrmMain.resources
