@@ -9,3 +9,4 @@ G:\KL36\KL36 Demo Sys\KL36 Demo Sys\obj\Debug\KL36_Demo_Sys._04_Control.UC_Selec
 G:\KL36\KL36 Demo Sys\KL36 Demo Sys\obj\Debug\KL36.Demo.Sys.exe
 G:\KL36\KL36 Demo Sys\KL36 Demo Sys\obj\Debug\KL36.Demo.Sys.pdb
 G:\KL36\KL36 Demo Sys\KL36 Demo Sys\obj\Debug\KL36_Demo_Sys.FrmMain.resources
+G:\KL36\KL36 Demo Sys\KL36 Demo Sys\obj\Debug\KL36_Demo_Sys._04_Control.UC_GPIO.resources

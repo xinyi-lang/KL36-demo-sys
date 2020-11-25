@@ -45,7 +45,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(259, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "开始扫描串口,准备连接设备";
+            this.label1.Text = "开始扫描串口,尝试连接设备";
             // 
             // label2
             // 
@@ -73,7 +73,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(61, 260);
+            this.label3.Location = new System.Drawing.Point(88, 263);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 19);
             this.label3.TabIndex = 5;

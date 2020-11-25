@@ -18,7 +18,7 @@ namespace KL36_Demo_Sys._04_Control
         string[] SCIPorts;
         byte[] recvData = new byte[100];
         byte[] userShake = { (byte)11, (byte)'a', (byte)'u', (byte)'a', (byte)'r', (byte)'t', (byte)'?' }; //与终端握手帧数据
-        
+        byte[] finshShake = { (byte)7, (byte)'o', (byte)'k' };
 
         public UC_SelectUart()
         {
@@ -40,13 +40,11 @@ namespace KL36_Demo_Sys._04_Control
 
                         if (recvData.Length == 0 || !System.Text.Encoding.Default.GetString(recvData).Contains("I am an uart"))
                         {
-
                             sci.Close();
                             continue;
                         }
                         if (System.Text.Encoding.Default.GetString(recvData).Contains("I am an uart"))   //记录UART_User串口的Com号
                         {
-
                             PublicVar.g_SCIComNum = SCIPorts[i];
                             sci.Close();
                             break;                                                              //找到UART_User串口后，跳出循环
@@ -63,25 +61,28 @@ namespace KL36_Demo_Sys._04_Control
             {
                 label2.Text += "          " + SCIPorts[i]+"\n";
             }
+            
             if (SCIPorts.Length >=1)
             {
                 FindSCI();
                 label2.Text += "已找到设备\n";
+                if (PublicVar.g_SCIComNum == null)
+                {
+                    MessageBox.Show("有设备但无用户串口，请连接");
+
+                }
+                else
+                {
+                    label2.Text += "开始打开串口...\n已自动选择用户串口：" + PublicVar.g_SCIComNum;
+                    comboBox1.Visible = true;
+                }
             }
             else
             {
                 MessageBox.Show("无可用串口，请检查串口是否连接好");
             }
-            if (PublicVar.g_SCIComNum ==null)
-            {
-                MessageBox.Show("已找到设备，但无用户串口，请连接");
-                
-            }
-            else
-            {
-                label2.Text += "开始打开串口...\n已自动选择用户串口：" + PublicVar.g_SCIComNum;
-                comboBox1.Visible = true;
-            }
+            
+            
             
         }
 
@@ -98,10 +99,11 @@ namespace KL36_Demo_Sys._04_Control
             sci = new SCI(PublicVar.g_SCIComNum, PublicVar.g_SCIBaudRate);
             if (sci.SCIOpen())//串口打开成功
             {
-                this.label3.Text = "打开成功\n";
-                this.label3.Text+= "设备已连接，开始实验吧！";
+                this.label3.Text = "已选择波特率为："+comboBox1.Text+"\n";
+                this.label3.Text+= "设备可以正常连接，开始实验吧！";
                 PublicVar.g_Uflag = true;
-
+                sci.SCISendFrameData(ref finshShake);
+                sci.Close();
             }
             else
             {

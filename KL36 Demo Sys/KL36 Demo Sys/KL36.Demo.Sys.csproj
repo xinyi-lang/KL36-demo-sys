@@ -64,6 +64,12 @@
     <Compile Include="03-Function\SCI.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="04-Control\UC_GPIO.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="04-Control\UC_GPIO.Designer.cs">
+      <DependentUpon>UC_GPIO.cs</DependentUpon>
+    </Compile>
     <Compile Include="04-Control\UC_SelectUart.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="02-From\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="04-Control\UC_GPIO.resx">
+      <DependentUpon>UC_GPIO.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="04-Control\UC_SelectUart.resx">
       <DependentUpon>UC_SelectUart.cs</DependentUpon>

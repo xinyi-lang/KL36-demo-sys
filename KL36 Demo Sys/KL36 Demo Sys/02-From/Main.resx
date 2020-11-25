@@ -120,4 +120,20 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>本项目基于ARM Cortex M0+内核的KL36微控制器，通过与上位机的联合编程，完成的一个嵌入式实验演示系统。
+实现功能
+1.联机验证最小系统
+2.串行通信数据接收与发送
+3.GPIO控制三色灯
+4.LCD液晶的显示
+5.定时器的计时
+6.PWM控制呼吸灯
+7.温度采集
+8.FLASH读写
+该演示系统可以通过LCD液晶显示各个功能的运行效果与PC端的各种操作实现对微控制器端的控制与运行效果的显示。</value>
+  </data>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>159, 17</value>
+  </metadata>
 </root>
