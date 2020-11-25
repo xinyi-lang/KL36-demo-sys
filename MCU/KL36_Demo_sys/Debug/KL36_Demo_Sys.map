@@ -1631,7 +1631,7 @@ LOAD c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/
  .ARM.attributes
                 0x000005d7       0x1e c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtn.o
                 0x00000001                ASSERT ((__StackLimit >= __HeapLimit), region m_data overflowed with stack and heap)
-OUTPUT(KL36_Demo_1.elf elf32-littlearm)
+OUTPUT(KL36_Demo_Sys.elf elf32-littlearm)
 
 .debug_info     0x00000000     0x80bb
  .debug_info    0x00000000      0xb6d ./obj/emuart.o

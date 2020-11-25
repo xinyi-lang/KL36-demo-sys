@@ -28,11 +28,11 @@ SRC_CPPList := $(wildcard ./srcc/*.cpp)
 SRC_SList := $(wildcard ./srcs/*.S)
 
 #链接文件(.ld)的存储路径
-linkFile := "E:\KL36\KL36_Demo_1\03_MCU\linker_file\MKL36Z64xxx4_flash.ld"
+linkFile := "G:\KL36\MCU\KL36_Demo_Sys\03_MCU\linker_file\MKL36Z64xxx4_flash.ld"
 #定义生成的文件名
-finalGoal := KL36_Demo_1
+finalGoal := KL36_Demo_Sys
 #定义头文件所在的路径
-include := -I"E:\KL36\KL36_Demo_1\.settings" -I"E:\KL36\KL36_Demo_1\01_Doc" -I"E:\KL36\KL36_Demo_1\02_CPU" -I"E:\KL36\KL36_Demo_1\03_MCU" -I"E:\KL36\KL36_Demo_1\04_GEC" -I"E:\KL36\KL36_Demo_1\05_UserBoard" -I"E:\KL36\KL36_Demo_1\06_SoftComponent" -I"E:\KL36\KL36_Demo_1\07_NosPrg" -I"E:\KL36\KL36_Demo_1\Debug" -I"E:\KL36\KL36_Demo_1\03_MCU\linker_file" -I"E:\KL36\KL36_Demo_1\03_MCU\MCU_drivers" -I"E:\KL36\KL36_Demo_1\03_MCU\startup" -I"E:\KL36\KL36_Demo_1\Debug\obj" -I"E:\KL36\KL36_Demo_1\Debug\srcc" -I"E:\KL36\KL36_Demo_1\Debug\srcs"
+include := -I"G:\KL36\MCU\KL36_Demo_Sys\.settings" -I"G:\KL36\MCU\KL36_Demo_Sys\01_Doc" -I"G:\KL36\MCU\KL36_Demo_Sys\02_CPU" -I"G:\KL36\MCU\KL36_Demo_Sys\03_MCU" -I"G:\KL36\MCU\KL36_Demo_Sys\04_GEC" -I"G:\KL36\MCU\KL36_Demo_Sys\05_UserBoard" -I"G:\KL36\MCU\KL36_Demo_Sys\06_SoftComponent" -I"G:\KL36\MCU\KL36_Demo_Sys\07_NosPrg" -I"G:\KL36\MCU\KL36_Demo_Sys\Debug" -I"G:\KL36\MCU\KL36_Demo_Sys\03_MCU\linker_file" -I"G:\KL36\MCU\KL36_Demo_Sys\03_MCU\MCU_drivers" -I"G:\KL36\MCU\KL36_Demo_Sys\03_MCU\startup" -I"G:\KL36\MCU\KL36_Demo_Sys\Debug\obj" -I"G:\KL36\MCU\KL36_Demo_Sys\Debug\srcc" -I"G:\KL36\MCU\KL36_Demo_Sys\Debug\srcs"
 #定义优化级别。共有O0、O1、O2、Os和Og，默认使用Og
 opt := Og
 #.o文件列表
