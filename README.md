@@ -1,8 +1,10 @@
 ﻿# 项目介绍
 
 本项目基于ARM Cortex M0+内核的KL36微控制器，通过与上位机的联合编程，制作一个嵌入式实验演示系统。
-PC端:    KL36 Demo Sys
-MCU端:   MCU/KL36_Demo_Sys
+
+ - PC端:    KL36 Demo Sys
+ - MCU端:   MCU/KL36_Demo_Sys
+
 ## 实现功能
 
  1. 联机验证最小系统
