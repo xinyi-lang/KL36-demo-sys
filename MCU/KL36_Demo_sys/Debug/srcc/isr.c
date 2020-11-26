@@ -28,7 +28,10 @@ void UART_User_Handler(void)
 	//接收一个字节
 	//（1）接收一个字节
 	ch = uart_re1(UART_User, &flag);   //调用接收一个字节的函数，清接收中断位
-
+    if(flag)
+    {
+    	uart_send1(UART_User,ch);
+    }
 	if(flag==0)  goto UARTA_IRQHandler_Exit;     //若没有成功接收数据，直接退出
 	//（2）调用组帧程序，对接收到的数据组帧
 	gcRecvLen = emuart_recv(ch,gcRecvBuf);         //组帧程序仅当组帧完成时返回非0帧长
@@ -38,9 +41,9 @@ void UART_User_Handler(void)
     	gchflag=1;
     	
     }
-    if(gcRecvBuf[0]==11&&strncmp((char *)(gcRecvBuf+1),"auart?",6) == 0)
+    if(gcRecvBuf[0]==10&&strncmp((char *)(gcRecvBuf+1),"KL36?",5) == 0)
     {
-    	uart_send_string(UART_User,"I am an uart");                   //与上位机握手，确立通信关系
+    	uart_send_string(UART_User,"I am an KL36");                   //与上位机握手，确立通信关系
     	LCD_ShowString(60,40,BLACK,GRAY,(char *)"                     ");
         LCD_ShowString(60,40,YELLOW,GRAY,(char *)"KL36 is connecting");
     }

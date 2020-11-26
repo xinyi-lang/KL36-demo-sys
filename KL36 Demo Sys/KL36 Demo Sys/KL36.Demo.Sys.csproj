@@ -70,11 +70,23 @@
     <Compile Include="04-Control\UC_GPIO.Designer.cs">
       <DependentUpon>UC_GPIO.cs</DependentUpon>
     </Compile>
+    <Compile Include="04-Control\UC_Introduction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="04-Control\UC_Introduction.Designer.cs">
+      <DependentUpon>UC_Introduction.cs</DependentUpon>
+    </Compile>
     <Compile Include="04-Control\UC_SelectUart.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="04-Control\UC_SelectUart.Designer.cs">
       <DependentUpon>UC_SelectUart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="04-Control\UC_UART.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="04-Control\UC_UART.Designer.cs">
+      <DependentUpon>UC_UART.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,8 +96,14 @@
     <EmbeddedResource Include="04-Control\UC_GPIO.resx">
       <DependentUpon>UC_GPIO.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="04-Control\UC_Introduction.resx">
+      <DependentUpon>UC_Introduction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="04-Control\UC_SelectUart.resx">
       <DependentUpon>UC_SelectUart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="04-Control\UC_UART.resx">
+      <DependentUpon>UC_UART.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

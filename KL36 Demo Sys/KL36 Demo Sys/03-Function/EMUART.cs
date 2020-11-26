@@ -86,9 +86,6 @@ namespace KL36_Demo_Sys
                 if (!open(uartCom[i], baudRate)) continue;    //若打开失败，则继续遍历
                 //（3.2）发送握手数据，并等待返回
                 this.bufferClear();//清除接收数组缓冲区
-                //if (!send(new byte[] { 0x00 }, out tmpRecv, 20, 1))  //首先先发送老版本的握手信号"0",
-                //{   
-                //如果握手失败，再发送新版本的握手信号"[Are you an emuart??]"
                 this.bufferClear();//清除接收数组缓冲区
                 if (!send(System.Text.Encoding.Default.GetBytes("[Are you an emuart??]"), out tmpRecv, 20, 3)
                 || System.Text.Encoding.Default.GetString(tmpRecv) != "[Yes,I am an emuart!!]")

@@ -16,16 +16,17 @@ namespace KL36_Demo_Sys
     {
 
         public bool uflag;
+        UC_Introduction uci = new UC_Introduction();
         public FrmMain()
         {
             InitializeComponent();
-            
+            AddControlsToPanel(panelControls,uci);
             
         }
-        public void AddControlsToPanel(Control c)
+        public void AddControlsToPanel(Control master,Control slave)
         {
-            panelControls.Controls.Clear();
-            panelControls.Controls.Add(c);
+            master.Controls.Clear();
+            master.Controls.Add(slave);
         }
         public void CheckUart()
         {
@@ -47,7 +48,7 @@ namespace KL36_Demo_Sys
         private void button1_Click(object sender, EventArgs e)
         {
             UC_SelectUart usu = new UC_SelectUart();
-            AddControlsToPanel(usu);
+            AddControlsToPanel(panelControls,usu);
             label3.Text = "正在连接";
             timer1.Start();
 
@@ -69,14 +70,30 @@ namespace KL36_Demo_Sys
         {
             CheckUart();
         }
-
+        public void ClearPanel(Control c)
+        {
+            c.Controls.Clear();
+        }
         private void 开始实验ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UC_GPIO ucg = new UC_GPIO();
-            panel2.Controls.Clear();
-            panelControls.Controls.Clear();
-            panelControls.Visible = false;
-            panel2.Controls.Add(ucg);
+            ClearPanel(panelControls);
+            AddControlsToPanel(panelControls, ucg);
+
+        }
+
+        private void 返回首页ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClearPanel(panelControls);
+            AddControlsToPanel(panelControls, uci);
+        }
+
+        private void 开始实验ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            UC_UART ucu = new UC_UART();
+            ClearPanel(panelControls);
+            AddControlsToPanel(panelControls,ucu);
+
         }
     }
 }

@@ -14,20 +14,18 @@ namespace KL36_Demo_Sys._04_Control
     {
         SCI sci;
         byte[] recvData = new byte[100];
-        byte[] control = { (byte)8, (byte)'L', (byte)'E', (byte)'D' }; 
-        byte[] RedON = { 8, (byte)'r', (byte)'e', (byte)'d' }; //点亮小灯指令
-        byte[] BlueON = { (byte)9, (byte)'b', (byte)'l', (byte)'u', (byte)'e' };
-        byte[] GreenON = { (byte)10, (byte)'g', (byte)'r', (byte)'e', (byte)'e', (byte)'n' };
-        byte[] CyanON = { (byte)9, (byte)'c', (byte)'y', (byte)'a', (byte)'n' };
-        byte[] VioletON = { (byte)11, (byte)'v', (byte)'i', (byte)'o', (byte)'l', (byte)'e', (byte)'t' };
-        byte[] YellowON = { (byte)11, (byte)'y', (byte)'e', (byte)'l', (byte)'l', (byte)'o', (byte)'w' };
-        byte[] WhiteON = { (byte)10, (byte)'w', (byte)'h', (byte)'i', (byte)'t', (byte)'e' };
-        byte[] LedOff= { (byte)8, (byte)'o', (byte)'f', (byte)'f' };
-        string[] SCIPorts;
+        byte[] control  = { 8,  (byte)'L', (byte)'E', (byte)'D' }; 
+        byte[] RedON    = { 8,  (byte)'r', (byte)'e', (byte)'d' }; //点亮小灯指令
+        byte[] BlueON   = { 9,  (byte)'b', (byte)'l', (byte)'u', (byte)'e' };
+        byte[] GreenON  = { 10, (byte)'g', (byte)'r', (byte)'e', (byte)'e', (byte)'n' };
+        byte[] CyanON   = { 9,  (byte)'c', (byte)'y', (byte)'a', (byte)'n' };
+        byte[] VioletON = { 11, (byte)'v', (byte)'i', (byte)'o', (byte)'l', (byte)'e', (byte)'t' };
+        byte[] YellowON = { 11, (byte)'y', (byte)'e', (byte)'l', (byte)'l', (byte)'o', (byte)'w' };
+        byte[] WhiteON  = { 10, (byte)'w', (byte)'h', (byte)'i', (byte)'t', (byte)'e' };
+        byte[] LedOff   = { 8,  (byte)'o', (byte)'f', (byte)'f' };
         public UC_GPIO()
         {
             InitializeComponent();
-            SCIPorts = SCI.SCIGetPorts();
             sci = new SCI(PublicVar.g_SCIComNum, PublicVar.g_SCIBaudRate);
         }
 

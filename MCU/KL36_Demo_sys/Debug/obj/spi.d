@@ -1,40 +1,39 @@
-obj/spi.o: srcc/spi.c \
- E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\03_MCU\MCU_drivers/spi.h \
- E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\03_MCU/mcu.h \
- E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\03_MCU\startup/MKL36Z4.h \
- E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\02_CPU/core_cm0plus.h \
- E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\03_MCU\startup/system_MKL36Z4.h \
- E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\02_CPU/core_cmInstr.h \
- E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\02_CPU/core_cmFunc.h \
- E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\03_MCU\startup/system_MKL36Z4.h \
- E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\02_CPU/cpu.h \
- E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\02_CPU/core_cm0plus.h \
- E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\02_CPU/core_cmFunc.h \
- E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\02_CPU/core_cmInstr.h \
- E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\03_MCU\MCU_drivers/wdog.h
+obj/spi.o: srcc/spi.c G:\KL36\MCU\KL36_Demo_Sys\03_MCU\MCU_drivers/spi.h \
+ G:\KL36\MCU\KL36_Demo_Sys\03_MCU/mcu.h \
+ G:\KL36\MCU\KL36_Demo_Sys\03_MCU\startup/MKL36Z4.h \
+ G:\KL36\MCU\KL36_Demo_Sys\02_CPU/core_cm0plus.h \
+ G:\KL36\MCU\KL36_Demo_Sys\03_MCU\startup/system_MKL36Z4.h \
+ G:\KL36\MCU\KL36_Demo_Sys\02_CPU/core_cmInstr.h \
+ G:\KL36\MCU\KL36_Demo_Sys\02_CPU/core_cmFunc.h \
+ G:\KL36\MCU\KL36_Demo_Sys\03_MCU\startup/system_MKL36Z4.h \
+ G:\KL36\MCU\KL36_Demo_Sys\02_CPU/cpu.h \
+ G:\KL36\MCU\KL36_Demo_Sys\02_CPU/core_cm0plus.h \
+ G:\KL36\MCU\KL36_Demo_Sys\02_CPU/core_cmFunc.h \
+ G:\KL36\MCU\KL36_Demo_Sys\02_CPU/core_cmInstr.h \
+ G:\KL36\MCU\KL36_Demo_Sys\03_MCU\MCU_drivers/wdog.h
 
-E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\03_MCU\MCU_drivers/spi.h:
+G:\KL36\MCU\KL36_Demo_Sys\03_MCU\MCU_drivers/spi.h:
 
-E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\03_MCU/mcu.h:
+G:\KL36\MCU\KL36_Demo_Sys\03_MCU/mcu.h:
 
-E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\03_MCU\startup/MKL36Z4.h:
+G:\KL36\MCU\KL36_Demo_Sys\03_MCU\startup/MKL36Z4.h:
 
-E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\02_CPU/core_cm0plus.h:
+G:\KL36\MCU\KL36_Demo_Sys\02_CPU/core_cm0plus.h:
 
-E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\03_MCU\startup/system_MKL36Z4.h:
+G:\KL36\MCU\KL36_Demo_Sys\03_MCU\startup/system_MKL36Z4.h:
 
-E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\02_CPU/core_cmInstr.h:
+G:\KL36\MCU\KL36_Demo_Sys\02_CPU/core_cmInstr.h:
 
-E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\02_CPU/core_cmFunc.h:
+G:\KL36\MCU\KL36_Demo_Sys\02_CPU/core_cmFunc.h:
 
-E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\03_MCU\startup/system_MKL36Z4.h:
+G:\KL36\MCU\KL36_Demo_Sys\03_MCU\startup/system_MKL36Z4.h:
 
-E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\02_CPU/cpu.h:
+G:\KL36\MCU\KL36_Demo_Sys\02_CPU/cpu.h:
 
-E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\02_CPU/core_cm0plus.h:
+G:\KL36\MCU\KL36_Demo_Sys\02_CPU/core_cm0plus.h:
 
-E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\02_CPU/core_cmFunc.h:
+G:\KL36\MCU\KL36_Demo_Sys\02_CPU/core_cmFunc.h:
 
-E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\02_CPU/core_cmInstr.h:
+G:\KL36\MCU\KL36_Demo_Sys\02_CPU/core_cmInstr.h:
 
-E:\KL36\AHL-MCU-KL36-V3.2_20200701\04-Soft\CH09-Flash\Flash_KL36_20200622\03_MCU\MCU_drivers/wdog.h:
+G:\KL36\MCU\KL36_Demo_Sys\03_MCU\MCU_drivers/wdog.h:

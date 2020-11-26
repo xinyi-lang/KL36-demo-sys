@@ -17,7 +17,7 @@ namespace KL36_Demo_Sys._04_Control
         SCI sci;
         string[] SCIPorts;
         byte[] recvData = new byte[100];
-        byte[] userShake = { (byte)11, (byte)'a', (byte)'u', (byte)'a', (byte)'r', (byte)'t', (byte)'?' }; //与终端握手帧数据
+        byte[] userShake = { (byte)10,(byte)'K', (byte)'L', (byte)'3', (byte)'6', (byte)'?' }; //与终端握手帧数据
         byte[] finshShake = { (byte)7, (byte)'o', (byte)'k' };
 
         public UC_SelectUart()
@@ -38,12 +38,12 @@ namespace KL36_Demo_Sys._04_Control
                     if (sci.SCIReceiveData(ref recvData))
                     {
 
-                        if (recvData.Length == 0 || !System.Text.Encoding.Default.GetString(recvData).Contains("I am an uart"))
+                        if (recvData.Length == 0 || !System.Text.Encoding.Default.GetString(recvData).Contains("I am an KL36"))
                         {
                             sci.Close();
                             continue;
                         }
-                        if (System.Text.Encoding.Default.GetString(recvData).Contains("I am an uart"))   //记录UART_User串口的Com号
+                        if (System.Text.Encoding.Default.GetString(recvData).Contains("I am an KL36"))   //记录UART_User串口的Com号
                         {
                             PublicVar.g_SCIComNum = SCIPorts[i];
                             sci.Close();

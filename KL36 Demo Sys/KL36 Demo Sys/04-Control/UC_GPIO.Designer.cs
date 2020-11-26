@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnLedRed = new System.Windows.Forms.Button();
             this.BtnLedOff = new System.Windows.Forms.Button();
             this.BtnLedWhite = new System.Windows.Forms.Button();
             this.BtnLedViolet = new System.Windows.Forms.Button();
@@ -37,7 +38,6 @@
             this.BtnLedGreen = new System.Windows.Forms.Button();
             this.BtnLedBlue = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.BtnLedRed = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,10 +52,23 @@
             this.panel1.Controls.Add(this.BtnLedCyan);
             this.panel1.Controls.Add(this.BtnLedGreen);
             this.panel1.Controls.Add(this.BtnLedBlue);
-            this.panel1.Location = new System.Drawing.Point(231, 164);
+            this.panel1.Location = new System.Drawing.Point(174, 164);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(721, 113);
+            this.panel1.Size = new System.Drawing.Size(834, 178);
             this.panel1.TabIndex = 0;
+            // 
+            // BtnLedRed
+            // 
+            this.BtnLedRed.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BtnLedRed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnLedRed.ForeColor = System.Drawing.Color.Red;
+            this.BtnLedRed.Location = new System.Drawing.Point(19, 14);
+            this.BtnLedRed.Name = "BtnLedRed";
+            this.BtnLedRed.Size = new System.Drawing.Size(75, 72);
+            this.BtnLedRed.TabIndex = 8;
+            this.BtnLedRed.Text = "红色";
+            this.BtnLedRed.UseVisualStyleBackColor = true;
+            this.BtnLedRed.Click += new System.EventHandler(this.BtnLedRed_Click);
             // 
             // BtnLedOff
             // 
@@ -151,19 +164,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "控制小灯";
             // 
-            // BtnLedRed
-            // 
-            this.BtnLedRed.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BtnLedRed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnLedRed.ForeColor = System.Drawing.Color.Red;
-            this.BtnLedRed.Location = new System.Drawing.Point(19, 14);
-            this.BtnLedRed.Name = "BtnLedRed";
-            this.BtnLedRed.Size = new System.Drawing.Size(75, 72);
-            this.BtnLedRed.TabIndex = 8;
-            this.BtnLedRed.Text = "红色";
-            this.BtnLedRed.UseVisualStyleBackColor = true;
-            this.BtnLedRed.Click += new System.EventHandler(this.BtnLedRed_Click);
-            // 
             // UC_GPIO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -171,7 +171,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Name = "UC_GPIO";
-            this.Size = new System.Drawing.Size(1182, 753);
+            this.Size = new System.Drawing.Size(1182, 639);
             this.Load += new System.EventHandler(this.UC_GPIO_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

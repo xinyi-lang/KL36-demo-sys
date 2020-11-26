@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.开始ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.返回首页ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,17 +60,14 @@
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.系统演示系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.系统手册ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panelControls = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.panelControls = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -106,6 +102,7 @@
             this.返回首页ToolStripMenuItem.Name = "返回首页ToolStripMenuItem";
             this.返回首页ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
             this.返回首页ToolStripMenuItem.Text = "返回首页";
+            this.返回首页ToolStripMenuItem.Click += new System.EventHandler(this.返回首页ToolStripMenuItem_Click);
             // 
             // 退出ToolStripMenuItem
             // 
@@ -139,7 +136,7 @@
             // 开始实验ToolStripMenuItem
             // 
             this.开始实验ToolStripMenuItem.Name = "开始实验ToolStripMenuItem";
-            this.开始实验ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.开始实验ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
             this.开始实验ToolStripMenuItem.Text = "开始实验";
             this.开始实验ToolStripMenuItem.Click += new System.EventHandler(this.开始实验ToolStripMenuItem_Click);
             // 
@@ -156,20 +153,21 @@
             // 实验简介ToolStripMenuItem1
             // 
             this.实验简介ToolStripMenuItem1.Name = "实验简介ToolStripMenuItem1";
-            this.实验简介ToolStripMenuItem1.Size = new System.Drawing.Size(144, 26);
+            this.实验简介ToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.实验简介ToolStripMenuItem1.Text = "实验简介";
             // 
             // 演示视频ToolStripMenuItem1
             // 
             this.演示视频ToolStripMenuItem1.Name = "演示视频ToolStripMenuItem1";
-            this.演示视频ToolStripMenuItem1.Size = new System.Drawing.Size(144, 26);
+            this.演示视频ToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.演示视频ToolStripMenuItem1.Text = "演示视频";
             // 
             // 开始实验ToolStripMenuItem1
             // 
             this.开始实验ToolStripMenuItem1.Name = "开始实验ToolStripMenuItem1";
-            this.开始实验ToolStripMenuItem1.Size = new System.Drawing.Size(144, 26);
+            this.开始实验ToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.开始实验ToolStripMenuItem1.Text = "开始实验";
+            this.开始实验ToolStripMenuItem1.Click += new System.EventHandler(this.开始实验ToolStripMenuItem1_Click);
             // 
             // toolStripMenuItem5
             // 
@@ -304,34 +302,39 @@
             this.系统手册ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
             this.系统手册ToolStripMenuItem.Text = "系统手册";
             // 
-            // button1
+            // panelControls
             // 
-            this.button1.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(888, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 44);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "连接设备";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.panelControls.BackColor = System.Drawing.SystemColors.Control;
+            this.panelControls.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControls.Location = new System.Drawing.Point(0, 114);
+            this.panelControls.Name = "panelControls";
+            this.panelControls.Size = new System.Drawing.Size(1182, 639);
+            this.panelControls.TabIndex = 5;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BackgroundImage = global::KL36_Demo_Sys.Properties.Resources.icons8_maintenance_80px;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1182, 60);
+            this.panel1.Size = new System.Drawing.Size(1182, 80);
             this.panel1.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("黑体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(155, 15);
+            this.label3.Location = new System.Drawing.Point(244, 32);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 24);
             this.label3.TabIndex = 1;
@@ -341,53 +344,33 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("黑体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(24, 15);
+            this.label2.Font = new System.Drawing.Font("黑体", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(86, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(142, 25);
+            this.label2.Size = new System.Drawing.Size(152, 28);
             this.label2.TabIndex = 0;
             this.label2.Text = "当前状态：";
             // 
-            // panelControls
+            // button1
             // 
-            this.panelControls.Location = new System.Drawing.Point(304, 122);
-            this.panelControls.Name = "panelControls";
-            this.panelControls.Size = new System.Drawing.Size(832, 386);
-            this.panelControls.TabIndex = 4;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox1.Location = new System.Drawing.Point(12, 122);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(247, 386);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1182, 753);
-            this.panel2.TabIndex = 5;
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Location = new System.Drawing.Point(1005, 22);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(131, 44);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "连接设备";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 753);
-            this.Controls.Add(this.panelControls);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panelControls);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
             this.Text = "嵌入式实验演示系统  --基于KL36";
@@ -397,8 +380,6 @@
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -442,8 +423,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelControls;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Timer timer1;
     }
 }
