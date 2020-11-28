@@ -52,9 +52,9 @@
             this.panel1.Controls.Add(this.BtnLedCyan);
             this.panel1.Controls.Add(this.BtnLedGreen);
             this.panel1.Controls.Add(this.BtnLedBlue);
-            this.panel1.Location = new System.Drawing.Point(174, 164);
+            this.panel1.Location = new System.Drawing.Point(174, 188);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(834, 178);
+            this.panel1.Size = new System.Drawing.Size(834, 154);
             this.panel1.TabIndex = 0;
             // 
             // BtnLedRed

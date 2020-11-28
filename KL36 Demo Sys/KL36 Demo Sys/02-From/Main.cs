@@ -15,7 +15,8 @@ namespace KL36_Demo_Sys
     public partial class FrmMain : Form
     {
 
-        public bool uflag;
+        public int count;
+
         UC_Introduction uci = new UC_Introduction();
         public FrmMain()
         {
@@ -30,11 +31,18 @@ namespace KL36_Demo_Sys
         }
         public void CheckUart()
         {
-            if (PublicVar.g_Uflag)
+            count += 1;
+            if (PublicVar.g_Uflag==1)
             {
                 this.label3.Text = "连接成功";
+                button1.Text = "已连接";
+                button1.Enabled = false;
             }
-            
+            if(count>=1 && PublicVar.g_Uflag==-1)
+            {
+                this.label3.Text = "连接失败";
+            }
+
         }
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -47,12 +55,10 @@ namespace KL36_Demo_Sys
 
         private void button1_Click(object sender, EventArgs e)
         {
+            label3.Text = "正在连接";
             UC_SelectUart usu = new UC_SelectUart();
             AddControlsToPanel(panelControls,usu);
-            label3.Text = "正在连接";
             timer1.Start();
-
-
 
         }
 

@@ -68,8 +68,8 @@ namespace KL36_Demo_Sys._04_Control
                 label2.Text += "已找到设备\n";
                 if (PublicVar.g_SCIComNum == null)
                 {
-                    MessageBox.Show("有设备但无用户串口，请连接");
-
+                    MessageBox.Show("有设备但无用户串口，请连接","错误提示");
+                    PublicVar.g_Uflag = -1;
                 }
                 else
                 {
@@ -79,7 +79,8 @@ namespace KL36_Demo_Sys._04_Control
             }
             else
             {
-                MessageBox.Show("无可用串口，请检查串口是否连接好");
+                MessageBox.Show("无可用串口，请检查串口是否连接好","错误提示");
+                PublicVar.g_Uflag = -1;
             }
             
             
@@ -101,15 +102,11 @@ namespace KL36_Demo_Sys._04_Control
             {
                 this.label3.Text = "已选择波特率为："+comboBox1.Text+"\n";
                 this.label3.Text+= "设备可以正常连接，开始实验吧！";
-                PublicVar.g_Uflag = true;
+                PublicVar.g_Uflag = 1;
                 sci.SCISendFrameData(ref finshShake);
                 sci.Close();
             }
-            else
-            {
-                this.label3.Text = "打开失败";
-                PublicVar.g_Uflag = false;
-            }
+            
             
         }
 

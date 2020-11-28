@@ -198,5 +198,15 @@ namespace KL36_Demo_Sys._04_Control
             sci = new SCI(PublicVar.g_SCIComNum, PublicVar.g_SCIBaudRate);
             
         }
+
+        private void TbClear1_Click(object sender, EventArgs e)
+        {
+            this.TbSCISend.Text = "";
+        }
+
+        private void TbClear2_Click(object sender, EventArgs e)
+        {
+            this.TbShow.Text = "";
+        }
     }
 }
