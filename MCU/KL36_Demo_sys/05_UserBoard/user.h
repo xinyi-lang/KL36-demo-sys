@@ -42,7 +42,11 @@
 //#define SectorNum   62       //扇区号
 //#define Address   (0xF800)  //62扇区起始地址，KL36开发板一个扇区空间大小为2KB，62*2^10= 0x0000F800
 //#define CNTvar 0           //（物理地址）读取的字节数
-
+//（5）【改动】ADC接口定义
+#define AD_MCU_TEMP   ADC_PIN17  //MCU内部温度采集使用通道
+#define AD_BRIGHT     ADC_PIN6   //光照采集使用通道
+#define AD_BOARD_TEMP ADC_PIN4   //板上温度采集使用通道
 #endif    //防止重复定义（USER_H 结尾）
+
 
 

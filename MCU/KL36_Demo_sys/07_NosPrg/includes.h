@@ -12,6 +12,8 @@
 //（1）包含用到的构件
 #include "user.h"
 #include "lcd.h"
+#include "adc.h"
+#include "NumToStr.h"
 //----------------------------------------------------------------------
 //（2）全局使用的宏常数。
 
@@ -31,6 +33,7 @@
 //（在此增加全局变量）
 G_VAR_PREFIX  uint8_t  gTime[3];        //时间数组
 G_VAR_PREFIX  uint8_t  gchflag;
+G_VAR_PREFIX  uint8_t  gadflag;
 G_VAR_PREFIX  uint8_t gcRecvBuf[1024];  //串口UART_User接收数据缓冲区
 G_VAR_PREFIX  uint8_t gcRecvLen;       //串口UART_User接收到的数据长度，为0时表示没有收到数据
 //----------------------------------------------------------------------

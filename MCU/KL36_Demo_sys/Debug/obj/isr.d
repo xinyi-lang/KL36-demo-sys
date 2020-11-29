@@ -21,7 +21,8 @@ obj/isr.o: srcc/isr.c G:\KL36\MCU\KL36_Demo_Sys\07_NosPrg/includes.h \
  G:\KL36\MCU\KL36_Demo_Sys\05_UserBoard/lcd.h \
  G:\KL36\MCU\KL36_Demo_Sys\03_MCU\MCU_drivers/spi.h \
  G:\KL36\MCU\KL36_Demo_Sys\03_MCU\MCU_drivers/wdog.h \
- G:\KL36\MCU\KL36_Demo_Sys\06_SoftComponent/NumToStr.h
+ G:\KL36\MCU\KL36_Demo_Sys\06_SoftComponent/NumToStr.h \
+ G:\KL36\MCU\KL36_Demo_Sys\03_MCU\MCU_drivers/adc.h
 
 G:\KL36\MCU\KL36_Demo_Sys\07_NosPrg/includes.h:
 
@@ -70,3 +71,5 @@ G:\KL36\MCU\KL36_Demo_Sys\03_MCU\MCU_drivers/spi.h:
 G:\KL36\MCU\KL36_Demo_Sys\03_MCU\MCU_drivers/wdog.h:
 
 G:\KL36\MCU\KL36_Demo_Sys\06_SoftComponent/NumToStr.h:
+
+G:\KL36\MCU\KL36_Demo_Sys\03_MCU\MCU_drivers/adc.h:

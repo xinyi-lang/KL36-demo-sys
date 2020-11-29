@@ -21,6 +21,11 @@ int main(void)
     uint8_t  mFlag;           //主循环使用的临时变量
     uint8_t  mSec;	         //记当前秒的值
     uint8_t  i;
+    uint16_t mcu_temp_AD;			 //温度值
+	uint16_t light;                  //光照
+	uint16_t data[20];
+    float temperature;
+    float mcu_temp;
     //（1.2）【不变】关总中断
     DISABLE_INTERRUPTS;
     wdog_stop();
@@ -160,6 +165,39 @@ int main(void)
             		uart_send_string(UART_User,"关灯\r\n");
             		gchflag=0;
 				}	   
+       }//if(gchflag)结尾
+       if(gadflag==1)
+       {
+       		LCD_ShowString(60,40,BLACK,GRAY, (char *)"                 ");
+       		if(gcRecvBuf[0]==9&&strncmp((char *)(gcRecvBuf+1),"temp",4) == 0)
+				{
+					mcu_temp_AD = adc_read(AD_MCU_TEMP);
+					mcu_temp=TempTrans(mcu_temp_AD);
+					NumToStr_float(mcu_temp,1,data);
+					uart_send_string(UART_User,"环境温度：");
+					uart_send_string(UART_User,data);
+					uart_send_string(UART_User,"\r\n");
+					gadflag=0;
+				}
+			if(gcRecvBuf[0]==12&&strncmp((char *)(gcRecvBuf+1),"mcutemp",7) == 0)
+				{
+					temperature = TempRegression(adc_read(AD_BOARD_TEMP));
+        			NumToStr_float(temperature,1,data);
+        			uart_send_string(UART_User,"芯片温度：");
+					uart_send_string(UART_User,data);
+					uart_send_string(UART_User,"\r\n");
+        			gadflag=0;
+				}
+			if(gcRecvBuf[0]==10&&strncmp((char *)(gcRecvBuf+1),"light",7) == 0)
+				{
+					light = adc_read(AD_BRIGHT);
+        			NumToStr_float(light/10.0,1,data);
+        			uart_send_string(UART_User,"光照：");
+        			uart_send_string(UART_User,data);
+        			uart_send_string(UART_User,"\r\n");
+                	gadflag=0;
+				}
+       
        }
         
 
