@@ -52,9 +52,9 @@
             this.panel1.Controls.Add(this.BtnLedCyan);
             this.panel1.Controls.Add(this.BtnLedGreen);
             this.panel1.Controls.Add(this.BtnLedBlue);
-            this.panel1.Location = new System.Drawing.Point(174, 188);
+            this.panel1.Location = new System.Drawing.Point(232, 188);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(834, 154);
+            this.panel1.Size = new System.Drawing.Size(719, 101);
             this.panel1.TabIndex = 0;
             // 
             // BtnLedRed
@@ -72,14 +72,15 @@
             // 
             // BtnLedOff
             // 
+            this.BtnLedOff.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BtnLedOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnLedOff.ForeColor = System.Drawing.Color.DarkGray;
+            this.BtnLedOff.ForeColor = System.Drawing.Color.Silver;
             this.BtnLedOff.Location = new System.Drawing.Point(629, 14);
             this.BtnLedOff.Name = "BtnLedOff";
             this.BtnLedOff.Size = new System.Drawing.Size(79, 72);
             this.BtnLedOff.TabIndex = 1;
             this.BtnLedOff.Text = "关灯";
-            this.BtnLedOff.UseVisualStyleBackColor = true;
+            this.BtnLedOff.UseVisualStyleBackColor = false;
             this.BtnLedOff.Click += new System.EventHandler(this.BtnLedOff_Click);
             // 
             // BtnLedWhite
@@ -158,7 +159,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("黑体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(515, 114);
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(528, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 25);
             this.label1.TabIndex = 1;
@@ -168,8 +170,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
+            this.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.Name = "UC_GPIO";
             this.Size = new System.Drawing.Size(1182, 639);
             this.Load += new System.EventHandler(this.UC_GPIO_Load);

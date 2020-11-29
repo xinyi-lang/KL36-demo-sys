@@ -13,7 +13,6 @@ namespace KL36_Demo_Sys._04_Control
     public partial class UC_GPIO : UserControl
     {
         SCI sci;
-        byte[] recvData = new byte[100];
         byte[] control  = { 8,  (byte)'L', (byte)'E', (byte)'D' }; 
         byte[] RedON    = { 8,  (byte)'r', (byte)'e', (byte)'d' }; //点亮小灯指令
         byte[] BlueON   = { 9,  (byte)'b', (byte)'l', (byte)'u', (byte)'e' };

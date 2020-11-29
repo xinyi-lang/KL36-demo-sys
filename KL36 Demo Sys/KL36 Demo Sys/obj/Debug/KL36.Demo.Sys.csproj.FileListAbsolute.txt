@@ -12,3 +12,4 @@ G:\KL36\KL36 Demo Sys\KL36 Demo Sys\obj\Debug\KL36_Demo_Sys.FrmMain.resources
 G:\KL36\KL36 Demo Sys\KL36 Demo Sys\obj\Debug\KL36_Demo_Sys._04_Control.UC_GPIO.resources
 G:\KL36\KL36 Demo Sys\KL36 Demo Sys\obj\Debug\KL36_Demo_Sys._04_Control.UC_Introduction.resources
 G:\KL36\KL36 Demo Sys\KL36 Demo Sys\obj\Debug\KL36_Demo_Sys._04_Control.UC_UART.resources
+G:\KL36\KL36 Demo Sys\KL36 Demo Sys\obj\Debug\KL36_Demo_Sys._04_Control.UC_ADC.resources

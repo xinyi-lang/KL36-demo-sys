@@ -100,14 +100,14 @@
             // 返回首页ToolStripMenuItem
             // 
             this.返回首页ToolStripMenuItem.Name = "返回首页ToolStripMenuItem";
-            this.返回首页ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.返回首页ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.返回首页ToolStripMenuItem.Text = "返回首页";
             this.返回首页ToolStripMenuItem.Click += new System.EventHandler(this.返回首页ToolStripMenuItem_Click);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
@@ -124,19 +124,19 @@
             // 实验简介ToolStripMenuItem
             // 
             this.实验简介ToolStripMenuItem.Name = "实验简介ToolStripMenuItem";
-            this.实验简介ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.实验简介ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.实验简介ToolStripMenuItem.Text = "实验简介";
             // 
             // 演示视频ToolStripMenuItem
             // 
             this.演示视频ToolStripMenuItem.Name = "演示视频ToolStripMenuItem";
-            this.演示视频ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.演示视频ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.演示视频ToolStripMenuItem.Text = "演示视频";
             // 
             // 开始实验ToolStripMenuItem
             // 
             this.开始实验ToolStripMenuItem.Name = "开始实验ToolStripMenuItem";
-            this.开始实验ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.开始实验ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.开始实验ToolStripMenuItem.Text = "开始实验";
             this.开始实验ToolStripMenuItem.Click += new System.EventHandler(this.开始实验ToolStripMenuItem_Click);
             // 
@@ -153,19 +153,19 @@
             // 实验简介ToolStripMenuItem1
             // 
             this.实验简介ToolStripMenuItem1.Name = "实验简介ToolStripMenuItem1";
-            this.实验简介ToolStripMenuItem1.Size = new System.Drawing.Size(144, 26);
+            this.实验简介ToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.实验简介ToolStripMenuItem1.Text = "实验简介";
             // 
             // 演示视频ToolStripMenuItem1
             // 
             this.演示视频ToolStripMenuItem1.Name = "演示视频ToolStripMenuItem1";
-            this.演示视频ToolStripMenuItem1.Size = new System.Drawing.Size(144, 26);
+            this.演示视频ToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.演示视频ToolStripMenuItem1.Text = "演示视频";
             // 
             // 开始实验ToolStripMenuItem1
             // 
             this.开始实验ToolStripMenuItem1.Name = "开始实验ToolStripMenuItem1";
-            this.开始实验ToolStripMenuItem1.Size = new System.Drawing.Size(144, 26);
+            this.开始实验ToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.开始实验ToolStripMenuItem1.Text = "开始实验";
             this.开始实验ToolStripMenuItem1.Click += new System.EventHandler(this.开始实验ToolStripMenuItem1_Click);
             // 
@@ -182,19 +182,19 @@
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(144, 26);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem6.Text = "实验简介";
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(144, 26);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem7.Text = "演示视频";
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(144, 26);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem8.Text = "开始实验";
             // 
             // toolStripMenuItem13
@@ -210,19 +210,19 @@
             // toolStripMenuItem14
             // 
             this.toolStripMenuItem14.Name = "toolStripMenuItem14";
-            this.toolStripMenuItem14.Size = new System.Drawing.Size(144, 26);
+            this.toolStripMenuItem14.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem14.Text = "实验简介";
             // 
             // toolStripMenuItem15
             // 
             this.toolStripMenuItem15.Name = "toolStripMenuItem15";
-            this.toolStripMenuItem15.Size = new System.Drawing.Size(144, 26);
+            this.toolStripMenuItem15.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem15.Text = "演示视频";
             // 
             // toolStripMenuItem16
             // 
             this.toolStripMenuItem16.Name = "toolStripMenuItem16";
-            this.toolStripMenuItem16.Size = new System.Drawing.Size(144, 26);
+            this.toolStripMenuItem16.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem16.Text = "开始实验";
             // 
             // toolStripMenuItem9
@@ -238,19 +238,19 @@
             // toolStripMenuItem10
             // 
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(144, 26);
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem10.Text = "实验简介";
             // 
             // toolStripMenuItem11
             // 
             this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new System.Drawing.Size(144, 26);
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem11.Text = "演示视频";
             // 
             // toolStripMenuItem12
             // 
             this.toolStripMenuItem12.Name = "toolStripMenuItem12";
-            this.toolStripMenuItem12.Size = new System.Drawing.Size(144, 26);
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem12.Text = "开始实验";
             // 
             // toolStripMenuItem1
@@ -266,20 +266,21 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(144, 26);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem2.Text = "实验简介";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(144, 26);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem3.Text = "演示视频";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(144, 26);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem4.Text = "开始实验";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // 帮助ToolStripMenuItem
             // 

@@ -79,12 +79,10 @@ namespace KL36_Demo_Sys._04_Control
             }
             else
             {
-                MessageBox.Show("无可用串口，请检查串口是否连接好","错误提示");
+                MessageBox.Show("无可用串口，请检查！","错误提示");
                 PublicVar.g_Uflag = -1;
             }
-            
-            
-            
+
         }
 
 

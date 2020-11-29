@@ -101,5 +101,12 @@ namespace KL36_Demo_Sys
             AddControlsToPanel(panelControls,ucu);
 
         }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            UC_ADC uca = new UC_ADC();
+            ClearPanel(panelControls);
+            AddControlsToPanel(panelControls,uca);
+        }
     }
 }
