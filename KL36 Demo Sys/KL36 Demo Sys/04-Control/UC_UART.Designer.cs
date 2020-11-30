@@ -38,6 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.CbSCIReceive = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // TbSCISend
@@ -47,9 +48,11 @@
             this.TbSCISend.Name = "TbSCISend";
             this.TbSCISend.Size = new System.Drawing.Size(350, 104);
             this.TbSCISend.TabIndex = 0;
+            this.TbSCISend.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TbSCISend_KeyPress);
             // 
             // TbShow
             // 
+            this.TbShow.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbShow.Location = new System.Drawing.Point(570, 141);
             this.TbShow.Multiline = true;
             this.TbShow.Name = "TbShow";
@@ -96,15 +99,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(89, 349);
+            this.label2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(92, 401);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 15);
+            this.label2.Size = new System.Drawing.Size(0, 20);
             this.label2.TabIndex = 5;
             // 
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(282, 322);
+            this.button1.Location = new System.Drawing.Point(302, 322);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(137, 42);
             this.button1.TabIndex = 6;
@@ -143,10 +147,25 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.TbClear2_Click);
             // 
+            // CbSCIReceive
+            // 
+            this.CbSCIReceive.Font = new System.Drawing.Font("黑体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CbSCIReceive.FormattingEnabled = true;
+            this.CbSCIReceive.Items.AddRange(new object[] {
+            "字符串",
+            "十进制",
+            "十六进制"});
+            this.CbSCIReceive.Location = new System.Drawing.Point(623, 109);
+            this.CbSCIReceive.Name = "CbSCIReceive";
+            this.CbSCIReceive.Size = new System.Drawing.Size(244, 26);
+            this.CbSCIReceive.TabIndex = 10;
+            this.CbSCIReceive.Text = "默认接收所有数据类型";
+            // 
             // UC_UART
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CbSCIReceive);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -177,5 +196,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox CbSCIReceive;
     }
 }

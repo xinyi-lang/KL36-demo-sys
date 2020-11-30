@@ -15,10 +15,20 @@ namespace KL36_Demo_Sys._04_Control
         SCI sci;
         delegate void handleinterfaceupdatedelegate(Object textbox,
                                                     string text);
+
         public UC_UART()
         {
             InitializeComponent();
+            sci = new SCI(PublicVar.g_SCIComNum, PublicVar.g_SCIBaudRate);
+            if (sci.SCIOpen())
+            {
+                //设置接收中断处理事件
+                sci.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SCIPort_DataReceived);
+                //设置每接收到1个字节中断1次
+                sci.SCIReceInt(1);
+            }
             
+
         }
 
         private void BtnSendData_Click(object sender, EventArgs e)
@@ -36,7 +46,7 @@ namespace KL36_Demo_Sys._04_Control
             System.Collections.ArrayList SendData = new
                 System.Collections.ArrayList();
 
-            
+
             //如果发送数据为空
             if (this.TbSCISend.Text == string.Empty)
             {
@@ -46,7 +56,7 @@ namespace KL36_Demo_Sys._04_Control
 
             if (SendType == 0)//选择的是以字符串方式发送
             {
-                
+
                 this.label2.Text = "以字符串方式发送数据!";
                 //将要发送的数据进行编码,并获取编码后的数据长度
                 len = System.Text.Encoding.Default.GetBytes(this.TbSCISend.Text).Length;
@@ -56,7 +66,7 @@ namespace KL36_Demo_Sys._04_Control
                 //获取TbSCISend文本的码值
                 PublicVar.g_SendByteArray =
                   System.Text.Encoding.Default.GetBytes(this.TbSCISend.Text);
-                
+
             }
             else //选择的是以十进制或者是十六进制发送数据
             {
@@ -89,78 +99,86 @@ namespace KL36_Demo_Sys._04_Control
             }
 
             //发送全局变量_SendByteArray中的数据,并返回结果
-            if (sci.SCIOpen())
+            Flag = sci.SCISendData(ref PublicVar.g_SendByteArray);
+            if (Flag == true)//数据发送成功
             {
-                Flag = sci.SCISendData(ref PublicVar.g_SendByteArray);
-                if (Flag == true)//数据发送成功
-                {
-                    this.label2.Text += "数据发送成功!";
-                    sci.Close();
-                    change();
-                }
+                this.label2.Text = "数据发送成功!";
 
-                else
-                {
-                    this.label2.Text += "数据发送失败!";
-                    sci.Close();
-                }
             }
-           
+            else
+            {
+                this.label2.Text = "数据发送失败!";
 
-            
-                
+            }
+
         }
 
-        public void change()
+        ///-----------------------------------------------------------------
+        /// <summary>                                                       
+        /// 对    象:SCIPort                                                
+        /// 事    件:DataReceived                                           
+        /// 功    能:串口接收数据                                           
+        /// 函数调用:(1)SCIReceiveData,串口接收函数                         
+        ///          (2)SCIUpdateRevtxtbox,更新文本框中的内容               
+        /// </summary>                                                      
+        /// <param name="sender"></param>                                   
+        /// <param name="e"></param>                                        
+        ///-----------------------------------------------------------------
+        private void SCIPort_DataReceived(object sender,
+            System.IO.Ports.SerialDataReceivedEventArgs e)
         {
+            
             String str = String.Empty;
             bool Flag;//标记串口接收数据是否成功
             int len;//标记接收的数据的长度
 
             byte[] ch2 = new byte[2];
-            //ComDevice.Encoding = System.Text.Encoding.GetEncoding("GB2312");
 
             //调用串口接收函数,并返回结果
-
-            if (sci.SCIOpen())
+            Flag = sci.SCIReceiveData(ref PublicVar.g_ReceiveByteArray);
+            if (Flag == true)//串口接收数据成功
             {
 
-                Flag = sci.SCIReceiveData(ref PublicVar.g_ReceiveByteArray);
-
-                if (Flag == true)//串口接收数据成功
+                len = PublicVar.g_ReceiveByteArray.Length;
+                //对于字符串形式,考虑到可能有汉字,
+                //直接调用系统定义的函数,处理整个字符串
+                str = Encoding.GetEncoding("GB2312").GetString(PublicVar.g_ReceiveByteArray);
+                if (str!=null && str ==TbSCISend.Text)
                 {
-                    len = PublicVar.g_ReceiveByteArray.Length;
-                    //对于字符串形式,考虑到可能有汉字,
-                    //直接调用系统定义的函数,处理整个字符串
-                    str = Encoding.GetEncoding("GB2312").GetString(PublicVar.g_ReceiveByteArray);
-                    SCIUpdateRevtxtbox(TbShow, str);
-                    
-                    //十进制和十六进制形式按字节进行处理
-                    for (int i = 0; i < len; i++)
-                    {
-
-                        //十进制都是按照三位来显示,字节之间有空格表示区分
-                        SCIUpdateRevtxtbox(TbShow,
-                            PublicVar.g_ReceiveByteArray[i].ToString("D3") + "  ");
-                        //十六进制都是按照两位来显示,字节之间有空格表示区分
-                        SCIUpdateRevtxtbox(TbShow,
-                            PublicVar.g_ReceiveByteArray[i].ToString("X2") + "  ");
-                    }
-
-                    // sci.SCIReceInt(SCIPort, 1);//设置产生接收中断的字节数【2014-5-5 注释，否则会导致程序无响应】
-                    this.label2.Text += "过程提示:数据接收成功!";
+                    SCIUpdateRevtxtbox(TbShow, "字符串数据:    " + str );
                 }
-                //接收数据失败
                 else
                 {
-                    //sci.SCIReceInt(SCIPort, 1);//设置产生接收中断的字节数【2014-5-5 注释，否则会导致程序无响应】 
-                    this.label2.Text += "过程提示:数据接收失败!";
+                    SCIUpdateRevtxtbox(TbShow, "字符串数据:    无  ");
                 }
-            }
-           
-            sci.Close();
-        }
+                
 
+                //十进制和十六进制形式按字节进行处理
+                for (int i = 0; i < len; i++)
+                {
+
+                    
+                   //十进制都是按照三位来显示,字节之间有空格表示区分
+                   SCIUpdateRevtxtbox(TbShow, "十进制数据:    " +
+                   PublicVar.g_ReceiveByteArray[i].ToString("D3") + "  ");
+                    
+                  //十六进制都是按照两位来显示,字节之间有空格表示区分
+                  SCIUpdateRevtxtbox(TbShow, "十六进制数据: " +
+                  PublicVar.g_ReceiveByteArray[i].ToString("X2") + "  ");
+                    
+                    
+                }
+
+                // sci.SCIReceInt(SCIPort, 1);//设置产生接收中断的字节数【2014-5-5 注释，否则会导致程序无响应】
+                //this.label2.Text = "过程提示:数据接收成功!";
+            }
+            //接收数据失败
+            else
+            {
+
+                //this.label2.Text = "过程提示:数据接收失败!";
+            }
+        }
         ///-----------------------------------------------------------------
         /// <summary>                                                       
         /// 函数名:SCIUpdateRevtxtbox                                       
@@ -184,7 +202,7 @@ namespace KL36_Demo_Sys._04_Control
             }
             else
             {
-                ((TextBox)textbox).Text += text;
+                ((TextBox)textbox).Text += text+"\r\n\r\n";
                 //把光标放在最后一行
                 ((TextBox)textbox).SelectionStart =
                                            ((TextBox)textbox).Text.Length;
@@ -193,9 +211,10 @@ namespace KL36_Demo_Sys._04_Control
             }
         }
 
+
+
         private void UC_UART_Load(object sender, EventArgs e)
         {
-            sci = new SCI(PublicVar.g_SCIComNum, PublicVar.g_SCIBaudRate);
             
         }
 
@@ -208,5 +227,94 @@ namespace KL36_Demo_Sys._04_Control
         {
             this.TbShow.Text = "";
         }
+
+        private void TbSCISend_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int select = CbSCISendType.SelectedIndex;
+            if (select == 1)//输入的是十进制的数
+            {
+                //除了数字、逗号和退格键,其他都不给输入
+                if (e.KeyChar >= '0' && e.KeyChar <= '9' || e.KeyChar == 0x08
+                    || e.KeyChar == ',')
+                {
+                    //输入的是数字,可以任意输入逗号与退格符
+                    if (e.KeyChar >= '0' && e.KeyChar <= '9')
+                    {
+                        //在文本框中没有逗号时,
+                        //this.TbSCISend.Text.LastIndexOf(',')默认为-1
+                        //逗号之后出现第三个数字时,
+                        //才用得着考虑是否会大于255
+                        if (this.TbSCISend.Text.Length -
+                            this.TbSCISend.Text.LastIndexOf(',') >= 2)
+                        {
+                            //考虑如果输入的话,是否会超出255
+                            if (int.Parse(
+                                    this.TbSCISend.Text.Substring(
+                                 TbSCISend.Text.LastIndexOf(',') + 1)) * 10
+                                    + e.KeyChar - '0' > 255)
+                            {
+                                e.Handled = true;
+                                this.label2.Text = "输入数据不得大于255";
+                            }
+                            //默认情况下是允许输入的,即e.Handled = false
+                        }
+                    }
+                }
+                else
+                {
+                    e.Handled = true;//除了逗号、数字0~9,其他都不给输入
+                    this.label2.Text = "输入数据必须是0-9,或者逗号"
+                                          + ",或者退格符";
+                }
+            }
+            //十六进制的处理方式与十进制相同,只是判断是否大于255时不太一样
+            else if (select == 2)
+            {
+                //除了数字、大写字母、小写字母、逗号和退格键,其他都不给输入
+                if (e.KeyChar >= '0' && e.KeyChar <= '9' || e.KeyChar >= 'a'
+                    && e.KeyChar <= 'f' || e.KeyChar >= 'A' && e.KeyChar <=
+                    'F' || e.KeyChar == 0x08 || e.KeyChar == ',')
+                {
+                    //逗号和退格符可以任意输入,只考虑输入数字的情况
+                    if (e.KeyChar >= '0' && e.KeyChar <= '9')
+                    {
+                        if (this.TbSCISend.Text.Length -
+                             this.TbSCISend.Text.LastIndexOf(',') >= 2)
+                        {
+                            if (Convert.ToInt32(TbSCISend.Text.Substring(
+                               TbSCISend.Text.LastIndexOf(',') + 1), 16) * 16
+                                + (e.KeyChar - '0') > 255)
+                            {
+                                e.Handled = true;
+                                this.label2.Text = "输入数据不得大于255";
+                            }
+                        }
+                    }
+                    else if (e.KeyChar >= 'a' && e.KeyChar <= 'f'
+                        || e.KeyChar >= 'A' && e.KeyChar <= 'F')
+                    {
+                        if (this.TbSCISend.Text.Length -
+                             this.TbSCISend.Text.LastIndexOf(',') >= 2)
+                        {
+                            //无论是大写字母还是小写字母都转化成大写字母判断
+                            if (Convert.ToInt32(TbSCISend.Text.Substring(
+                               TbSCISend.Text.LastIndexOf(',') + 1), 16) * 16
+                                + (Char.ToUpper(e.KeyChar) - 'A') > 255)
+                            {
+                                e.Handled = true;
+                                this.label2.Text = "输入数据不得大于255";
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    e.Handled = true;
+                    this.label2.Text = "输入数据必须是0-9,a-f,A-F,或者逗号"
+                                          + ",或者退格符";
+                }
+            }
+        }
     }
 }
+

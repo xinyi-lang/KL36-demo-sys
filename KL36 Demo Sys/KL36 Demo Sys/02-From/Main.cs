@@ -108,5 +108,10 @@ namespace KL36_Demo_Sys
             ClearPanel(panelControls);
             AddControlsToPanel(panelControls,uca);
         }
+
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
     }
 }
