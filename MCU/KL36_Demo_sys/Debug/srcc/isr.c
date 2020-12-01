@@ -32,12 +32,15 @@ void UART_User_Handler(void)
 	if(flag==0)  goto UARTA_IRQHandler_Exit;     //若没有成功接收数据，直接退出
 	//（2）调用组帧程序，对接收到的数据组帧
 	gcRecvLen = emuart_recv(ch,gcRecvBuf);         //组帧程序仅当组帧完成时返回非0帧长
-	uart_send1(UART_User,ch);
+//	uart_send1(UART_User,ch);
 	if(gcRecvLen == 0) goto UARTA_IRQHandler_Exit;//未组帧直接退出
     if(gcRecvBuf[0]==8&&strncmp((char *)(gcRecvBuf+1),"LED",3) == 0)
     {
-    	gchflag=1;
-    	
+    	gchflag=1;	
+    }
+    if(gcRecvBuf[0]==8&&strncmp((char *)(gcRecvBuf+1),"ADC",3) == 0)
+    {
+    	gadflag=1;	
     }
     if(gcRecvBuf[0]==10&&strncmp((char *)(gcRecvBuf+1),"KL36?",5) == 0)
     {

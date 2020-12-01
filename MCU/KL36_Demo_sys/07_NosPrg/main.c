@@ -35,24 +35,34 @@ int main(void)
     
     //（1.4）给全局变量赋初值
    	//"时分秒"缓存初始化(00:00:00)
-   	gTime[0] = 0;       //时
-   	gTime[1] = 0;	  	//分
-   	gTime[2] = 0;	  	//秒
-   	mSec = gTime[2];	//记住当前秒的值
+//   	gTime[0] = 0;       //时
+//   	gTime[1] = 0;	  	//分
+//   	gTime[2] = 0;	  	//秒
+//   	mSec = gTime[2];	//记住当前秒的值
     //（1.5）用户外设模块初始化
-    gpio_init(LIGHT_RED,GPIO_OUTPUT,LIGHT_OFF);    //初始化蓝灯
-    gpio_init(LIGHT_BLUE,GPIO_OUTPUT,LIGHT_OFF);    //初始化蓝灯
-    gpio_init(LIGHT_GREEN,GPIO_OUTPUT,LIGHT_OFF);    //初始化蓝灯
+    //初始化三色灯
+    gpio_init(LIGHT_RED,GPIO_OUTPUT,LIGHT_OFF);    
+    gpio_init(LIGHT_BLUE,GPIO_OUTPUT,LIGHT_OFF);    
+    gpio_init(LIGHT_GREEN,GPIO_OUTPUT,LIGHT_OFF);
+    //LCD初始化、初始界面绘制
     LCD_Init();
-    
     LCD_aotu(2,2,238,318,0);
     LCD_ShowString(92,20,RED,GRAY,(char *)"GPIO-LED");
     LCD_ShowString(60,40,RED,GRAY,(char *)"PC not connected");
     LCD_aotu(2,80,236,120,0);
-    LCD_ShowString(6,92,BLACK,GRAY,(char *)"light:");
+    LCD_ShowString(6,92,BLACK,GRAY,(char *)"LED_ON:");
+    LCD_ShowString(6,132,BLACK,GRAY,(char *)"McuTemp:");
+    LCD_ShowString(6,172,BLACK,GRAY,(char *)"Temp:");
+    LCD_ShowString(6,212,BLACK,GRAY,(char *)"Light:");
+    //串口初始化
     uart_init(UART_User, 115200);
     uart_init(UART_Debug, 115200);
+    //flash初始化
     flash_init();
+    //ADC初始化
+    adc_init(AD_BOARD_TEMP,0);        
+  	adc_init(AD_MCU_TEMP,0);        
+    adc_init(AD_BRIGHT,0);
     systick_init(10);      //设置systick为10ms中断
     //（1.6）使能模块中断
     uart_enable_re_int(UART_User);
@@ -71,6 +81,36 @@ int main(void)
         //（2.3）达到主循环次数设定值，执行下列语句，进行灯的亮暗处理
         //（2.3.1）清除循环次数变量
         mMainLoopCount=0; 
+        if(gadflag==1)
+       {
+       		LCD_ShowString(60,40,BLACK,GRAY, (char *)"                 ");
+       		if(gcRecvBuf[0]==9&&strncmp((char *)(gcRecvBuf+1),"temp",4) == 0)
+				{
+					mcu_temp_AD = adc_read(AD_MCU_TEMP);
+					mcu_temp=TempTrans(mcu_temp_AD);
+					NumToStr_float(mcu_temp,1,data);
+					uart_send_string(UART_User,data);
+					LCD_ShowString(70,172,BLACK,GRAY,(char *)data);
+					gadflag=0;
+				}
+			if(gcRecvBuf[0]==12&&strncmp((char *)(gcRecvBuf+1),"mcutemp",7) == 0)
+				{
+					temperature = TempRegression(adc_read(AD_BOARD_TEMP));
+        			NumToStr_float(temperature,1,data);
+					uart_send_string(UART_User,data);
+					LCD_ShowString(90,132,BLACK,GRAY,(char *)data);
+        			gadflag=0;
+				}
+			if(gcRecvBuf[0]==10&&strncmp((char *)(gcRecvBuf+1),"light",7) == 0)
+				{
+					light = adc_read(AD_BRIGHT);
+        			NumToStr_float(light/10.0,1,data);
+        			uart_send_string(UART_User,data);
+        			LCD_ShowString(80,212,BLACK,GRAY,(char *)data);
+                	gadflag=0;
+				}
+       
+       }
         if(gchflag==1){
         	LCD_ShowString(60,40,BLACK,GRAY, (char *)"                 ");
        		if(gcRecvBuf[0]==8&&strncmp((char *)(gcRecvBuf+1),"red",3) == 0)
@@ -166,39 +206,7 @@ int main(void)
             		gchflag=0;
 				}	   
        }//if(gchflag)结尾
-       if(gadflag==1)
-       {
-       		LCD_ShowString(60,40,BLACK,GRAY, (char *)"                 ");
-       		if(gcRecvBuf[0]==9&&strncmp((char *)(gcRecvBuf+1),"temp",4) == 0)
-				{
-					mcu_temp_AD = adc_read(AD_MCU_TEMP);
-					mcu_temp=TempTrans(mcu_temp_AD);
-					NumToStr_float(mcu_temp,1,data);
-					uart_send_string(UART_User,"环境温度：");
-					uart_send_string(UART_User,data);
-					uart_send_string(UART_User,"\r\n");
-					gadflag=0;
-				}
-			if(gcRecvBuf[0]==12&&strncmp((char *)(gcRecvBuf+1),"mcutemp",7) == 0)
-				{
-					temperature = TempRegression(adc_read(AD_BOARD_TEMP));
-        			NumToStr_float(temperature,1,data);
-        			uart_send_string(UART_User,"芯片温度：");
-					uart_send_string(UART_User,data);
-					uart_send_string(UART_User,"\r\n");
-        			gadflag=0;
-				}
-			if(gcRecvBuf[0]==10&&strncmp((char *)(gcRecvBuf+1),"light",7) == 0)
-				{
-					light = adc_read(AD_BRIGHT);
-        			NumToStr_float(light/10.0,1,data);
-        			uart_send_string(UART_User,"光照：");
-        			uart_send_string(UART_User,data);
-        			uart_send_string(UART_User,"\r\n");
-                	gadflag=0;
-				}
        
-       }
         
 
     }     //for(;;)结尾

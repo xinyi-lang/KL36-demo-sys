@@ -193,13 +193,6 @@ Discarded input sections
  .text          0x00000000        0x0 ./obj/adc.o
  .data          0x00000000        0x0 ./obj/adc.o
  .bss           0x00000000        0x0 ./obj/adc.o
- .text.adc_init
-                0x00000000       0x3e ./obj/adc.o
- .text.adc_init_inner
-                0x00000000      0x12c ./obj/adc.o
- .rodata.adc_init_inner
-                0x00000000       0x18 ./obj/adc.o
- .text.adc_cal  0x00000000      0x19c ./obj/adc.o
  .debug_macro   0x00000000      0xafc ./obj/adc.o
  .debug_macro   0x00000000       0x16 ./obj/adc.o
  .debug_macro   0x00000000       0x22 ./obj/adc.o
@@ -1198,7 +1191,7 @@ LOAD c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/
  .FlashConfig   0x00006c00       0x10 ./obj/startup_MKL36Z4.o
                 0x00006c10                . = ALIGN (0x4)
 
-.text           0x00006c10     0x78f4
+.text           0x00006c10     0x7c38
                 0x00006c10                . = ALIGN (0x4)
  *(.text)
  .text          0x00006c10       0x48 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
@@ -1350,273 +1343,284 @@ LOAD c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/
                 0x00009d48                sendFrame
  .text.crc16    0x00009e2c       0xb8 ./obj/emuart.o
                 0x00009e2c                crc16
+ .text.adc_init
+                0x00009ee4       0x3e ./obj/adc.o
+                0x00009ee4                adc_init
  .text.adc_read
-                0x00009ee4       0x2c ./obj/adc.o
-                0x00009ee4                adc_read
+                0x00009f22       0x2c ./obj/adc.o
+                0x00009f22                adc_read
+ *fill*         0x00009f4e        0x2 
+ .text.adc_init_inner
+                0x00009f50      0x12c ./obj/adc.o
+                0x00009f50                adc_init_inner
  .text.adc_read_inner
-                0x00009f10       0x54 ./obj/adc.o
-                0x00009f10                adc_read_inner
+                0x0000a07c       0x54 ./obj/adc.o
+                0x0000a07c                adc_read_inner
  .text.TempRegression
-                0x00009f64       0xe0 ./obj/adc.o
-                0x00009f64                TempRegression
+                0x0000a0d0       0xe0 ./obj/adc.o
+                0x0000a0d0                TempRegression
  .text.TempTrans
-                0x0000a044       0x80 ./obj/adc.o
-                0x0000a044                TempTrans
+                0x0000a1b0       0x80 ./obj/adc.o
+                0x0000a1b0                TempTrans
+ .text.adc_cal  0x0000a230      0x19c ./obj/adc.o
+                0x0000a230                adc_cal
  .text.SystemInit
-                0x0000a0c4      0x118 ./obj/system_MKL36Z4.o
-                0x0000a0c4                SystemInit
+                0x0000a3cc      0x118 ./obj/system_MKL36Z4.o
+                0x0000a3cc                SystemInit
  .text.NVIC_SetPriority
-                0x0000a1dc       0xec ./obj/systick.o
+                0x0000a4e4       0xec ./obj/systick.o
  .text.systick_init
-                0x0000a2c8       0x70 ./obj/systick.o
-                0x0000a2c8                systick_init
- .text.main     0x0000a338      0x808 ./obj/main.o
-                0x0000a338                main
+                0x0000a5d0       0x70 ./obj/systick.o
+                0x0000a5d0                systick_init
+ .text.main     0x0000a640      0x818 ./obj/main.o
+                0x0000a640                main
  .text.gpio_init
-                0x0000ab40       0xf8 ./obj/gpio.o
-                0x0000ab40                gpio_init
+                0x0000ae58       0xf8 ./obj/gpio.o
+                0x0000ae58                gpio_init
  .text.gpio_set
-                0x0000ac38       0x7c ./obj/gpio.o
-                0x0000ac38                gpio_set
+                0x0000af50       0x7c ./obj/gpio.o
+                0x0000af50                gpio_set
  .text.gpio_get_port_pin
-                0x0000acb4       0x30 ./obj/gpio.o
-                0x0000acb4                gpio_get_port_pin
+                0x0000afcc       0x30 ./obj/gpio.o
+                0x0000afcc                gpio_get_port_pin
  .text.wdog_stop
-                0x0000ace4       0x20 ./obj/wdog.o
-                0x0000ace4                wdog_stop
+                0x0000affc       0x20 ./obj/wdog.o
+                0x0000affc                wdog_stop
  .text.wdog_feed
-                0x0000ad04       0x1c ./obj/wdog.o
-                0x0000ad04                wdog_feed
+                0x0000b01c       0x1c ./obj/wdog.o
+                0x0000b01c                wdog_feed
  .text.spi_init
-                0x0000ad20      0x3e0 ./obj/spi.o
-                0x0000ad20                spi_init
+                0x0000b038      0x3e0 ./obj/spi.o
+                0x0000b038                spi_init
  .text.spi_send1
-                0x0000b100       0x74 ./obj/spi.o
-                0x0000b100                spi_send1
+                0x0000b418       0x74 ./obj/spi.o
+                0x0000b418                spi_send1
  .text.NumToStr_float
-                0x0000b174      0x1d4 ./obj/NumToStr.o
-                0x0000b174                NumToStr_float
+                0x0000b48c      0x1d4 ./obj/NumToStr.o
+                0x0000b48c                NumToStr_float
  .text.BIOS_API_Init
-                0x0000b348       0xec ./obj/gec.o
-                0x0000b348                BIOS_API_Init
+                0x0000b660       0xec ./obj/gec.o
+                0x0000b660                BIOS_API_Init
  .text.NVIC_EnableIRQ
-                0x0000b434       0x2c ./obj/uart.o
+                0x0000b74c       0x2c ./obj/uart.o
  .text.uart_init
-                0x0000b460      0x2ac ./obj/uart.o
-                0x0000b460                uart_init
+                0x0000b778      0x2ac ./obj/uart.o
+                0x0000b778                uart_init
  .text.uart_send1
-                0x0000b70c       0xac ./obj/uart.o
-                0x0000b70c                uart_send1
+                0x0000ba24       0xac ./obj/uart.o
+                0x0000ba24                uart_send1
  .text.uart_sendN
-                0x0000b7b8       0x8a ./obj/uart.o
-                0x0000b7b8                uart_sendN
+                0x0000bad0       0x8a ./obj/uart.o
+                0x0000bad0                uart_sendN
  .text.uart_send_string
-                0x0000b842       0x80 ./obj/uart.o
-                0x0000b842                uart_send_string
- *fill*         0x0000b8c2        0x2 
+                0x0000bb5a       0x80 ./obj/uart.o
+                0x0000bb5a                uart_send_string
+ *fill*         0x0000bbda        0x2 
  .text.uart_re1
-                0x0000b8c4       0xc8 ./obj/uart.o
-                0x0000b8c4                uart_re1
+                0x0000bbdc       0xc8 ./obj/uart.o
+                0x0000bbdc                uart_re1
  .text.uart_enable_re_int
-                0x0000b98c       0x80 ./obj/uart.o
-                0x0000b98c                uart_enable_re_int
+                0x0000bca4       0x80 ./obj/uart.o
+                0x0000bca4                uart_enable_re_int
  .text.uart_is_uartNo
-                0x0000ba0c       0x12 ./obj/uart.o
-                0x0000ba0c                uart_is_uartNo
- *fill*         0x0000ba1e        0x2 
+                0x0000bd24       0x12 ./obj/uart.o
+                0x0000bd24                uart_is_uartNo
+ *fill*         0x0000bd36        0x2 
  .text.LCD_Init
-                0x0000ba20       0xf4 ./obj/lcd.o
-                0x0000ba20                LCD_Init
+                0x0000bd38       0xf4 ./obj/lcd.o
+                0x0000bd38                LCD_Init
  .text.LCD_Clear
-                0x0000bb14       0x6c ./obj/lcd.o
-                0x0000bb14                LCD_Clear
+                0x0000be2c       0x6c ./obj/lcd.o
+                0x0000be2c                LCD_Clear
  .text.LCD_DrawPoint
-                0x0000bb80       0x4c ./obj/lcd.o
-                0x0000bb80                LCD_DrawPoint
+                0x0000be98       0x4c ./obj/lcd.o
+                0x0000be98                LCD_DrawPoint
  .text.LCD_DrawCircle
-                0x0000bbcc      0x1ec ./obj/lcd.o
-                0x0000bbcc                LCD_DrawCircle
+                0x0000bee4      0x1ec ./obj/lcd.o
+                0x0000bee4                LCD_DrawCircle
  .text.LCD_ShowCharactor
-                0x0000bdb8       0xce ./obj/lcd.o
-                0x0000bdb8                LCD_ShowCharactor
- *fill*         0x0000be86        0x2 
+                0x0000c0d0       0xce ./obj/lcd.o
+                0x0000c0d0                LCD_ShowCharactor
+ *fill*         0x0000c19e        0x2 
  .text.LCD_ShowString
-                0x0000be88      0x248 ./obj/lcd.o
-                0x0000be88                LCD_ShowString
+                0x0000c1a0      0x248 ./obj/lcd.o
+                0x0000c1a0                LCD_ShowString
  .text.LCD_aotu
-                0x0000c0d0      0x288 ./obj/lcd.o
-                0x0000c0d0                LCD_aotu
+                0x0000c3e8      0x288 ./obj/lcd.o
+                0x0000c3e8                LCD_aotu
  .text.LCD_DrawLine
-                0x0000c358      0x132 ./obj/lcd.o
-                0x0000c358                LCD_DrawLine
+                0x0000c670      0x132 ./obj/lcd.o
+                0x0000c670                LCD_DrawLine
  .text.LCD_DrawSurface
-                0x0000c48a       0x9e ./obj/lcd.o
-                0x0000c48a                LCD_DrawSurface
+                0x0000c7a2       0x9e ./obj/lcd.o
+                0x0000c7a2                LCD_DrawSurface
  .text.LCD_WR_DATA8
-                0x0000c528       0x4c ./obj/lcd.o
-                0x0000c528                LCD_WR_DATA8
+                0x0000c840       0x4c ./obj/lcd.o
+                0x0000c840                LCD_WR_DATA8
  .text.LCD_WR_DATA
-                0x0000c574       0x60 ./obj/lcd.o
-                0x0000c574                LCD_WR_DATA
+                0x0000c88c       0x60 ./obj/lcd.o
+                0x0000c88c                LCD_WR_DATA
  .text.LCD_WR_REG
-                0x0000c5d4       0x4c ./obj/lcd.o
-                0x0000c5d4                LCD_WR_REG
+                0x0000c8ec       0x4c ./obj/lcd.o
+                0x0000c8ec                LCD_WR_REG
  .text.LCD_WR_REG_DATA
-                0x0000c620       0x2e ./obj/lcd.o
-                0x0000c620                LCD_WR_REG_DATA
+                0x0000c938       0x2e ./obj/lcd.o
+                0x0000c938                LCD_WR_REG_DATA
  .text.Address_set
-                0x0000c64e       0xb8 ./obj/lcd.o
-                0x0000c64e                Address_set
- *fill*         0x0000c706        0x2 
+                0x0000c966       0xb8 ./obj/lcd.o
+                0x0000c966                Address_set
+ *fill*         0x0000ca1e        0x2 
  .text.UART0_IRQHandler
-                0x0000c708      0x154 ./obj/isr.o
-                0x0000c708                UART0_IRQHandler
+                0x0000ca20      0x16c ./obj/isr.o
+                0x0000ca20                UART0_IRQHandler
  .text.SysTick_Handler
-                0x0000c85c       0x34 ./obj/isr.o
-                0x0000c85c                SysTick_Handler
- .text.SecAdd1  0x0000c890       0x68 ./obj/isr.o
-                0x0000c890                SecAdd1
+                0x0000cb8c       0x34 ./obj/isr.o
+                0x0000cb8c                SysTick_Handler
+ .text.SecAdd1  0x0000cbc0       0x68 ./obj/isr.o
+                0x0000cbc0                SecAdd1
  .text.out_char
-                0x0000c8f8       0x20 ./obj/printf.o
-                0x0000c8f8                out_char
+                0x0000cc28       0x20 ./obj/printf.o
+                0x0000cc28                out_char
  .text.printk_putc
-                0x0000c918       0x4c ./obj/printf.o
+                0x0000cc48       0x4c ./obj/printf.o
  .text.printk_mkfloatstr
-                0x0000c964      0x27c ./obj/printf.o
-                0x0000c964                printk_mkfloatstr
+                0x0000cc94      0x27c ./obj/printf.o
+                0x0000cc94                printk_mkfloatstr
  .text.printk_mknumstr
-                0x0000cbe0       0xf8 ./obj/printf.o
+                0x0000cf10       0xf8 ./obj/printf.o
  .text.printk_pad_zero
-                0x0000ccd8       0x32 ./obj/printf.o
+                0x0000d008       0x32 ./obj/printf.o
  .text.printk_pad_space
-                0x0000cd0a       0x32 ./obj/printf.o
- .text.printk   0x0000cd3c      0x74c ./obj/printf.o
-                0x0000cd3c                printk
+                0x0000d03a       0x32 ./obj/printf.o
+ .text.printk   0x0000d06c      0x74c ./obj/printf.o
+                0x0000d06c                printk
  .text.myprintf
-                0x0000d488       0x3c ./obj/printf.o
-                0x0000d488                myprintf
- .text.log      0x0000d4c4      0x110 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-w_log.o)
-                0x0000d4c4                log
+                0x0000d7b8       0x3c ./obj/printf.o
+                0x0000d7b8                myprintf
+ .text.log      0x0000d7f4      0x110 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-w_log.o)
+                0x0000d7f4                log
  .text.__ieee754_log
-                0x0000d5d4      0x3ac c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-e_log.o)
-                0x0000d5d4                __ieee754_log
- .text.matherr  0x0000d980        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-s_matherr.o)
-                0x0000d980                matherr
- .text.nan      0x0000d984        0xc c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-s_nan.o)
-                0x0000d984                nan
- .text.__errno  0x0000d990        0xc c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libg_nano.a(lib_a-errno.o)
-                0x0000d990                __errno
- .text.memset   0x0000d99c       0x10 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libg_nano.a(lib_a-memset.o)
-                0x0000d99c                memset
- .text.strncmp  0x0000d9ac       0x22 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libg_nano.a(lib_a-strncmp.o)
-                0x0000d9ac                strncmp
+                0x0000d904      0x3ac c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-e_log.o)
+                0x0000d904                __ieee754_log
+ .text.matherr  0x0000dcb0        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-s_matherr.o)
+                0x0000dcb0                matherr
+ .text.nan      0x0000dcb4        0xc c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-s_nan.o)
+                0x0000dcb4                nan
+ .text.__errno  0x0000dcc0        0xc c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libg_nano.a(lib_a-errno.o)
+                0x0000dcc0                __errno
+ .text.memset   0x0000dccc       0x10 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libg_nano.a(lib_a-memset.o)
+                0x0000dccc                memset
+ .text.strncmp  0x0000dcdc       0x22 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libg_nano.a(lib_a-strncmp.o)
+                0x0000dcdc                strncmp
  *(.rodata)
- *fill*         0x0000d9ce        0x2 
- .rodata        0x0000d9d0       0x2f ./obj/emuart.o
- *fill*         0x0000d9ff        0x1 
- .rodata        0x0000da00      0x15b ./obj/main.o
- *fill*         0x0000db5b        0x1 
- .rodata        0x0000db5c       0x26 ./obj/gec.o
- *fill*         0x0000db82        0x2 
- .rodata        0x0000db84       0x5a ./obj/isr.o
- *fill*         0x0000dbde        0x2 
- .rodata        0x0000dbe0       0x80 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(divsf3.o)
- .rodata        0x0000dc60       0x40 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(mulsf3.o)
- .rodata        0x0000dca0       0x40 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(divdf3.o)
- .rodata        0x0000dce0       0x40 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(muldf3.o)
+ *fill*         0x0000dcfe        0x2 
+ .rodata        0x0000dd00       0x2f ./obj/emuart.o
+ *fill*         0x0000dd2f        0x1 
+ .rodata        0x0000dd30      0x153 ./obj/main.o
+ *fill*         0x0000de83        0x1 
+ .rodata        0x0000de84       0x26 ./obj/gec.o
+ *fill*         0x0000deaa        0x2 
+ .rodata        0x0000deac       0x5e ./obj/isr.o
+ *fill*         0x0000df0a        0x2 
+ .rodata        0x0000df0c       0x80 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(divsf3.o)
+ .rodata        0x0000df8c       0x40 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(mulsf3.o)
+ .rodata        0x0000dfcc       0x40 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(divdf3.o)
+ .rodata        0x0000e00c       0x40 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(muldf3.o)
  *(.rodata*)
+ .rodata.adc_init_inner
+                0x0000e04c       0x18 ./obj/adc.o
  .rodata.PORT_ARR
-                0x0000dd20       0x14 ./obj/gpio.o
-                0x0000dd20                PORT_ARR
+                0x0000e064       0x14 ./obj/gpio.o
+                0x0000e064                PORT_ARR
  .rodata.GPIO_ARR
-                0x0000dd34       0x14 ./obj/gpio.o
-                0x0000dd34                GPIO_ARR
+                0x0000e078       0x14 ./obj/gpio.o
+                0x0000e078                GPIO_ARR
  .rodata.UART_ARR
-                0x0000dd48        0x8 ./obj/uart.o
-                0x0000dd48                UART_ARR
+                0x0000e08c        0x8 ./obj/uart.o
+                0x0000e08c                UART_ARR
  .rodata.nAsciiDot
-                0x0000dd50      0x600 ./obj/lcd.o
- .rodata.GB_16  0x0000e350       0xcc ./obj/lcd.o
+                0x0000e094      0x600 ./obj/lcd.o
+ .rodata.GB_16  0x0000e694       0xcc ./obj/lcd.o
  .rodata.printk
-                0x0000e41c       0xc8 ./obj/printf.o
+                0x0000e760       0xc8 ./obj/printf.o
  .rodata.log.str1.4
-                0x0000e4e4        0x8 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-w_log.o)
+                0x0000e828        0x8 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-w_log.o)
                                   0x5 (size before relaxing)
  *(.glue_7)
- .glue_7        0x0000e4ec        0x0 linker stubs
+ .glue_7        0x0000e830        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0000e4ec        0x0 linker stubs
+ .glue_7t       0x0000e830        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0000e4ec        0x0 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
+ .eh_frame      0x0000e830        0x0 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
  *(.init)
- .init          0x0000e4ec        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crti.o
-                0x0000e4ec                _init
- .init          0x0000e4f0        0x8 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtn.o
+ .init          0x0000e830        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crti.o
+                0x0000e830                _init
+ .init          0x0000e834        0x8 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtn.o
  *(.fini)
- .fini          0x0000e4f8        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crti.o
-                0x0000e4f8                _fini
- .fini          0x0000e4fc        0x8 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtn.o
-                0x0000e504                . = ALIGN (0x4)
+ .fini          0x0000e83c        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crti.o
+                0x0000e83c                _fini
+ .fini          0x0000e840        0x8 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtn.o
+                0x0000e848                . = ALIGN (0x4)
 
-.vfp11_veneer   0x0000e504        0x0
- .vfp11_veneer  0x0000e504        0x0 linker stubs
+.vfp11_veneer   0x0000e848        0x0
+ .vfp11_veneer  0x0000e848        0x0 linker stubs
 
-.v4_bx          0x0000e504        0x0
- .v4_bx         0x0000e504        0x0 linker stubs
+.v4_bx          0x0000e848        0x0
+ .v4_bx         0x0000e848        0x0 linker stubs
 
-.iplt           0x0000e504        0x0
- .iplt          0x0000e504        0x0 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
+.iplt           0x0000e848        0x0
+ .iplt          0x0000e848        0x0 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x0000e504        0x8
-                0x0000e504                __exidx_start = .
+.ARM            0x0000e848        0x8
+                0x0000e848                __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x0000e504        0x8 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(_udivmoddi4.o)
-                0x0000e50c                __exidx_end = .
+ .ARM.exidx     0x0000e848        0x8 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(_udivmoddi4.o)
+                0x0000e850                __exidx_end = .
 
-.rel.dyn        0x0000e50c        0x0
- .rel.iplt      0x0000e50c        0x0 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
+.rel.dyn        0x0000e850        0x0
+ .rel.iplt      0x0000e850        0x0 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
 
-.ctors          0x0000e50c        0x0
-                0x0000e50c                __CTOR_LIST__ = .
+.ctors          0x0000e850        0x0
+                0x0000e850                __CTOR_LIST__ = .
  *crtbegin.o(.ctors)
  *crtbegin?.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
  *(SORT_BY_NAME(.ctors.*))
  *(.ctors)
-                0x0000e50c                __CTOR_END__ = .
+                0x0000e850                __CTOR_END__ = .
 
-.dtors          0x0000e50c        0x0
-                0x0000e50c                __DTOR_LIST__ = .
+.dtors          0x0000e850        0x0
+                0x0000e850                __DTOR_LIST__ = .
  *crtbegin.o(.dtors)
  *crtbegin?.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o *crtend?.o) .dtors)
  *(SORT_BY_NAME(.dtors.*))
  *(.dtors)
-                0x0000e50c                __DTOR_END__ = .
+                0x0000e850                __DTOR_END__ = .
 
-.preinit_array  0x0000e50c        0x0
-                0x0000e50c                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x0000e850        0x0
+                0x0000e850                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x0000e50c                PROVIDE (__preinit_array_end, .)
+                0x0000e850                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x0000e50c        0x4
-                0x0000e50c                PROVIDE (__init_array_start, .)
+.init_array     0x0000e850        0x4
+                0x0000e850                PROVIDE (__init_array_start, .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x0000e50c        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
-                0x0000e510                PROVIDE (__init_array_end, .)
+ .init_array    0x0000e850        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
+                0x0000e854                PROVIDE (__init_array_end, .)
 
-.fini_array     0x0000e510        0x4
+.fini_array     0x0000e854        0x4
                 [!provide]                PROVIDE (__fini_array_start, .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0000e510        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
+ .fini_array    0x0000e854        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
                 [!provide]                PROVIDE (__fini_array_end, .)
-                0x0000e514                __etext = .
-                0x0000e514                __DATA_ROM = .
+                0x0000e858                __etext = .
+                0x0000e858                __DATA_ROM = .
 
 .mac_config     0x0000fc00        0x0
                 0x0000fc00                . = ALIGN (0x4)
@@ -1630,7 +1634,7 @@ LOAD c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/
                 0x20000400                . = ALIGN (0x8)
                 0x20000400                _mtb_end = .
 
-.data           0x20000400       0x74 load address 0x0000e514
+.data           0x20000400       0x74 load address 0x0000e858
                 0x20000400                . = ALIGN (0x4)
                 0x20000400                __DATA_RAM = .
                 0x20000400                __data_start__ = .
@@ -1660,12 +1664,12 @@ LOAD c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/
  *(.jcr*)
                 0x20000474                . = ALIGN (0x4)
                 0x20000474                __data_end__ = .
-                0x0000e588                __DATA_END = (__DATA_ROM + (__data_end__ - __data_start__))
+                0x0000e8cc                __DATA_END = (__DATA_ROM + (__data_end__ - __data_start__))
 
-.igot.plt       0x20000474        0x0 load address 0x0000e588
+.igot.plt       0x20000474        0x0 load address 0x0000e8cc
  .igot.plt      0x20000474        0x0 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
 
-.bss            0x20000474      0x430 load address 0x0000e588
+.bss            0x20000474      0x430 load address 0x0000e8cc
                 0x20000474                . = ALIGN (0x4)
                 0x20000474                __START_BSS = .
                 0x20000474                __bss_start__ = .
@@ -1692,7 +1696,7 @@ LOAD c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/
                 0x200008a4                __bss_end__ = .
                 0x200008a4                __END_BSS = .
 
-.heap           0x200008a4      0x204 load address 0x0000e9b8
+.heap           0x200008a4      0x204 load address 0x0000ecfc
                 0x200008a8                . = ALIGN (0x8)
  *fill*         0x200008a4        0x4 
                 0x200008a8                __end__ = .
@@ -1702,7 +1706,7 @@ LOAD c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/
  *fill*         0x200008a8      0x200 
                 0x20000aa8                __HeapLimit = .
 
-.stack          0x20000aa8      0x100 load address 0x0000ebbc
+.stack          0x20000aa8      0x100 load address 0x0000ef00
                 0x20000aa8                . = ALIGN (0x8)
                 0x20000ba8                . = (. + STACK_SIZE)
  *fill*         0x20000aa8      0x100 
@@ -1840,39 +1844,39 @@ LOAD c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/
                 0x00000001                ASSERT ((__StackLimit >= __HeapLimit), region m_data overflowed with stack and heap)
 OUTPUT(KL36_Demo_Sys.elf elf32-littlearm)
 
-.debug_info     0x00000000     0x917e
+.debug_info     0x00000000     0x917b
  .debug_info    0x00000000      0xb6d ./obj/emuart.o
  .debug_info    0x00000b6d      0xe43 ./obj/adc.o
  .debug_info    0x000019b0      0x402 ./obj/system_MKL36Z4.o
  .debug_info    0x00001db2      0x402 ./obj/systick.o
- .debug_info    0x000021b4      0xaed ./obj/main.o
- .debug_info    0x00002ca1     0x1096 ./obj/gpio.o
- .debug_info    0x00003d37      0x2eb ./obj/wdog.o
- .debug_info    0x00004022      0x846 ./obj/spi.o
- .debug_info    0x00004868      0x1f0 ./obj/NumToStr.o
- .debug_info    0x00004a58      0x9c9 ./obj/gec.o
- .debug_info    0x00005421     0x12d1 ./obj/uart.o
- .debug_info    0x000066f2     0x1102 ./obj/lcd.o
- .debug_info    0x000077f4      0xaca ./obj/isr.o
- .debug_info    0x000082be      0xe9a ./obj/printf.o
- .debug_info    0x00009158       0x26 ./obj/startup_MKL36Z4.o
+ .debug_info    0x000021b4      0xaea ./obj/main.o
+ .debug_info    0x00002c9e     0x1096 ./obj/gpio.o
+ .debug_info    0x00003d34      0x2eb ./obj/wdog.o
+ .debug_info    0x0000401f      0x846 ./obj/spi.o
+ .debug_info    0x00004865      0x1f0 ./obj/NumToStr.o
+ .debug_info    0x00004a55      0x9c9 ./obj/gec.o
+ .debug_info    0x0000541e     0x12d1 ./obj/uart.o
+ .debug_info    0x000066ef     0x1102 ./obj/lcd.o
+ .debug_info    0x000077f1      0xaca ./obj/isr.o
+ .debug_info    0x000082bb      0xe9a ./obj/printf.o
+ .debug_info    0x00009155       0x26 ./obj/startup_MKL36Z4.o
 
-.debug_abbrev   0x00000000     0x1d7a
+.debug_abbrev   0x00000000     0x1d87
  .debug_abbrev  0x00000000      0x272 ./obj/emuart.o
  .debug_abbrev  0x00000272      0x29e ./obj/adc.o
  .debug_abbrev  0x00000510       0xed ./obj/system_MKL36Z4.o
  .debug_abbrev  0x000005fd      0x162 ./obj/systick.o
- .debug_abbrev  0x0000075f      0x213 ./obj/main.o
- .debug_abbrev  0x00000972      0x30a ./obj/gpio.o
- .debug_abbrev  0x00000c7c      0x122 ./obj/wdog.o
- .debug_abbrev  0x00000d9e      0x1e6 ./obj/spi.o
- .debug_abbrev  0x00000f84       0x9d ./obj/NumToStr.o
- .debug_abbrev  0x00001021      0x1e7 ./obj/gec.o
- .debug_abbrev  0x00001208      0x358 ./obj/uart.o
- .debug_abbrev  0x00001560      0x2bd ./obj/lcd.o
- .debug_abbrev  0x0000181d      0x279 ./obj/isr.o
- .debug_abbrev  0x00001a96      0x2d0 ./obj/printf.o
- .debug_abbrev  0x00001d66       0x14 ./obj/startup_MKL36Z4.o
+ .debug_abbrev  0x0000075f      0x220 ./obj/main.o
+ .debug_abbrev  0x0000097f      0x30a ./obj/gpio.o
+ .debug_abbrev  0x00000c89      0x122 ./obj/wdog.o
+ .debug_abbrev  0x00000dab      0x1e6 ./obj/spi.o
+ .debug_abbrev  0x00000f91       0x9d ./obj/NumToStr.o
+ .debug_abbrev  0x0000102e      0x1e7 ./obj/gec.o
+ .debug_abbrev  0x00001215      0x358 ./obj/uart.o
+ .debug_abbrev  0x0000156d      0x2bd ./obj/lcd.o
+ .debug_abbrev  0x0000182a      0x279 ./obj/isr.o
+ .debug_abbrev  0x00001aa3      0x2d0 ./obj/printf.o
+ .debug_abbrev  0x00001d73       0x14 ./obj/startup_MKL36Z4.o
 
 .debug_aranges  0x00000000      0x448
  .debug_aranges
@@ -1984,22 +1988,22 @@ OUTPUT(KL36_Demo_Sys.elf elf32-littlearm)
  .debug_macro   0x0000faf1      0x223 ./obj/isr.o
  .debug_macro   0x0000fd14      0x1a0 ./obj/printf.o
 
-.debug_line     0x00000000     0x3dbe
+.debug_line     0x00000000     0x3dc7
  .debug_line    0x00000000      0x486 ./obj/emuart.o
  .debug_line    0x00000486      0x423 ./obj/adc.o
  .debug_line    0x000008a9      0x28a ./obj/system_MKL36Z4.o
  .debug_line    0x00000b33      0x2eb ./obj/systick.o
- .debug_line    0x00000e1e      0x58e ./obj/main.o
- .debug_line    0x000013ac      0x49e ./obj/gpio.o
- .debug_line    0x0000184a      0x2eb ./obj/wdog.o
- .debug_line    0x00001b35      0x44e ./obj/spi.o
- .debug_line    0x00001f83      0x30c ./obj/NumToStr.o
- .debug_line    0x0000228f      0x3c9 ./obj/gec.o
- .debug_line    0x00002658      0x539 ./obj/uart.o
- .debug_line    0x00002b91      0x745 ./obj/lcd.o
- .debug_line    0x000032d6      0x4b8 ./obj/isr.o
- .debug_line    0x0000378e      0x5c2 ./obj/printf.o
- .debug_line    0x00003d50       0x6e ./obj/startup_MKL36Z4.o
+ .debug_line    0x00000e1e      0x58f ./obj/main.o
+ .debug_line    0x000013ad      0x49e ./obj/gpio.o
+ .debug_line    0x0000184b      0x2eb ./obj/wdog.o
+ .debug_line    0x00001b36      0x44e ./obj/spi.o
+ .debug_line    0x00001f84      0x30c ./obj/NumToStr.o
+ .debug_line    0x00002290      0x3c9 ./obj/gec.o
+ .debug_line    0x00002659      0x539 ./obj/uart.o
+ .debug_line    0x00002b92      0x745 ./obj/lcd.o
+ .debug_line    0x000032d7      0x4c0 ./obj/isr.o
+ .debug_line    0x00003797      0x5c2 ./obj/printf.o
+ .debug_line    0x00003d59       0x6e ./obj/startup_MKL36Z4.o
 
 .debug_str      0x00000000    0x4fffd
  .debug_str     0x00000000    0x4dd70 ./obj/emuart.o
