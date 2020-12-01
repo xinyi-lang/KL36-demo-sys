@@ -71,7 +71,7 @@
             "实验三：不可用",
             "实验四：不可用",
             "实验五：不可用",
-            "实验六：界面已做，功能未完善"});
+            "实验六：功能可用，但不能点击太快"});
             this.listBox1.Location = new System.Drawing.Point(480, 200);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(485, 280);
