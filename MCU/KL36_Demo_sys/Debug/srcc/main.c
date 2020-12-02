@@ -47,13 +47,26 @@ int main(void)
     //LCD³õÊ¼»¯¡¢³õÊ¼½çÃæ»æÖÆ
     LCD_Init();
     LCD_aotu(2,2,238,318,0);
-    LCD_ShowString(92,20,RED,GRAY,(char *)"GPIO-LED");
-    LCD_ShowString(60,40,RED,GRAY,(char *)"PC not connected");
-    LCD_aotu(2,80,236,120,0);
-    LCD_ShowString(6,92,BLACK,GRAY,(char *)"LED_ON:");
-    LCD_ShowString(6,132,BLACK,GRAY,(char *)"McuTemp:");
-    LCD_ShowString(6,172,BLACK,GRAY,(char *)"Temp:");
-    LCD_ShowString(6,212,BLACK,GRAY,(char *)"Light:");
+    
+    LCD_ShowCharactor(55,20,BLACK,GRAY,GB_16[3].Msk);
+    LCD_ShowCharactor(70,20,BLACK,GRAY,GB_16[4].Msk);
+    LCD_ShowCharactor(85,20,BLACK,GRAY,GB_16[5].Msk);
+    LCD_ShowCharactor(100,20,BLACK,GRAY,GB_16[6].Msk);
+    LCD_ShowCharactor(115,20,BLACK,GRAY,GB_16[7].Msk);
+    LCD_ShowCharactor(130,20,BLACK,GRAY,GB_16[8].Msk);
+    LCD_ShowCharactor(145,20,BLACK,GRAY,GB_16[9].Msk);
+    LCD_ShowCharactor(160,20,BLACK,GRAY,GB_16[10].Msk);
+    LCD_ShowCharactor(175,20,BLACK,GRAY,GB_16[11].Msk);
+    LCD_ShowString(60,50,RED,GRAY,(char *)"PC not connected");
+
+    LCD_ShowString(6,90,BLACK,GRAY,(char *)"LED_Color:");
+    LCD_aotu(4,110,236,120,1);
+    LCD_ShowString(6,125,BLACK,GRAY,(char *)"Mcu_Temp:");
+    LCD_aotu(4,145,236,155,1);
+    LCD_ShowString(6,160,BLACK,GRAY,(char *)"Round_Temp:");
+    LCD_aotu(4,180,236,190,1);
+    LCD_ShowString(6,195,BLACK,GRAY,(char *)"Light_Intensity:");
+    LCD_aotu(4,215,236,225,1);
     //´®¿Ú³õÊ¼»¯
     uart_init(UART_User, 115200);
     uart_init(UART_Debug, 115200);
@@ -83,14 +96,14 @@ int main(void)
         mMainLoopCount=0; 
         if(gadflag==1)
        {
-       		LCD_ShowString(60,40,BLACK,GRAY, (char *)"                 ");
+       		LCD_ShowString(60,50,BLACK,GRAY, (char *)"                 ");
        		if(gcRecvBuf[0]==9&&strncmp((char *)(gcRecvBuf+1),"temp",4) == 0)
 				{
 					mcu_temp_AD = adc_read(AD_MCU_TEMP);
 					mcu_temp=TempTrans(mcu_temp_AD);
 					NumToStr_float(mcu_temp,1,data);
 					uart_send_string(UART_User,data);
-					LCD_ShowString(70,172,BLACK,GRAY,(char *)data);
+					LCD_ShowString(100,160,BLACK,GRAY,(char *)data);
 					gadflag=0;
 				}
 			if(gcRecvBuf[0]==12&&strncmp((char *)(gcRecvBuf+1),"mcutemp",7) == 0)
@@ -98,7 +111,7 @@ int main(void)
 					temperature = TempRegression(adc_read(AD_BOARD_TEMP));
         			NumToStr_float(temperature,1,data);
 					uart_send_string(UART_User,data);
-					LCD_ShowString(90,132,BLACK,GRAY,(char *)data);
+					LCD_ShowString(80,125,BLACK,GRAY,(char *)data);
         			gadflag=0;
 				}
 			if(gcRecvBuf[0]==10&&strncmp((char *)(gcRecvBuf+1),"light",7) == 0)
@@ -106,21 +119,21 @@ int main(void)
 					light = adc_read(AD_BRIGHT);
         			NumToStr_float(light/10.0,1,data);
         			uart_send_string(UART_User,data);
-        			LCD_ShowString(80,212,BLACK,GRAY,(char *)data);
+        			LCD_ShowString(135,195,BLACK,GRAY,(char *)data);
                 	gadflag=0;
 				}
        
        }
         if(gchflag==1){
-        	LCD_ShowString(60,40,BLACK,GRAY, (char *)"                 ");
+        	LCD_ShowString(60,50,BLACK,GRAY, (char *)"                 ");
        		if(gcRecvBuf[0]==8&&strncmp((char *)(gcRecvBuf+1),"red",3) == 0)
 				{
 					gpio_set(LIGHT_RED,LIGHT_ON);   
 					gpio_set(LIGHT_BLUE,LIGHT_OFF);
 					gpio_set(LIGHT_GREEN,LIGHT_OFF);
-					LCD_ShowString(70,92,BLACK,GRAY,(char *)"          ");
-        			LCD_ShowString(70,92,RED,GRAY,(char *)"red ");
-        			for (i=30;i>2;i=i-2)LCD_DrawCircle(120,205,i,RED);
+					LCD_ShowString(90,90,BLACK,GRAY,(char *)"          ");
+        			LCD_ShowString(90,90,RED,GRAY,(char *)"red ");
+        			for (i=30;i>2;i=i-2)LCD_DrawCircle(120,270,i,RED);
 					uart_send_string(UART_User,"ºìµÆ:ÁÁ\r\n");
 					gchflag=0;
 				}
@@ -129,9 +142,9 @@ int main(void)
 					gpio_set(LIGHT_BLUE,LIGHT_ON);  
 					gpio_set(LIGHT_RED,LIGHT_OFF);
 					gpio_set(LIGHT_GREEN,LIGHT_OFF);
-					LCD_ShowString(70,92,BLACK,GRAY,(char *)"          ");
-        			LCD_ShowString(70,92,BLUE,GRAY,(char *)"blue");
-        			for (i=30;i>2;i=i-2)LCD_DrawCircle(120,205,i,BLUE);
+					LCD_ShowString(90,90,BLACK,GRAY,(char *)"          ");
+        			LCD_ShowString(90,90,BLUE,GRAY,(char *)"blue");
+        			for (i=30;i>2;i=i-2)LCD_DrawCircle(120,270,i,BLUE);
 					uart_send_string(UART_User,"À¶µÆ:ÁÁ\r\n");
 					gchflag=0;
 				}
@@ -141,9 +154,9 @@ int main(void)
 					gpio_set(LIGHT_GREEN,LIGHT_ON); 
 					gpio_set(LIGHT_RED,LIGHT_OFF);
 					gpio_set(LIGHT_BLUE,LIGHT_OFF);
-					LCD_ShowString(70,92,BLACK,GRAY,(char *)"          ");
-        			LCD_ShowString(70,92,GREEN,GRAY,(char *)"green");
-        			for (i=30;i>2;i=i-2)LCD_DrawCircle(120,205,i,GREEN);
+					LCD_ShowString(90,90,BLACK,GRAY,(char *)"          ");
+        			LCD_ShowString(90,90,GREEN,GRAY,(char *)"green");
+        			for (i=30;i>2;i=i-2)LCD_DrawCircle(120,270,i,GREEN);
 					uart_send_string(UART_User,"ÂÌµÆ:ÁÁ\r\n");
 					gchflag=0;
 				}
@@ -153,9 +166,9 @@ int main(void)
 					gpio_set(LIGHT_BLUE,LIGHT_ON);   
 					gpio_set(LIGHT_GREEN,LIGHT_ON);
 					gpio_set(LIGHT_RED,LIGHT_OFF);
-					LCD_ShowString(70,92,BLACK,GRAY,(char *)"          ");
-        			LCD_ShowString(70,92,CYAN,GRAY,(char *)"cyan");
-        			for (i=30;i>2;i=i-2)LCD_DrawCircle(120,205,i,CYAN);
+					LCD_ShowString(90,90,BLACK,GRAY,(char *)"          ");
+        			LCD_ShowString(90,90,CYAN,GRAY,(char *)"cyan");
+        			for (i=30;i>2;i=i-2)LCD_DrawCircle(120,270,i,CYAN);
 					uart_send_string(UART_User,"ÇàµÆ£¨À¶ÂÌºÏ³É£©:ÁÁ\r\n");
 					gchflag=0;
 				}
@@ -164,9 +177,9 @@ int main(void)
 					gpio_set(LIGHT_RED,LIGHT_ON);   
             		gpio_set(LIGHT_BLUE,LIGHT_ON);   
             		gpio_set(LIGHT_GREEN,LIGHT_OFF);
-            		LCD_ShowString(70,92,BLACK,GRAY,(char *)"          ");
-        			LCD_ShowString(70,92,VIOLET,GRAY,(char *)"violet");
-        			for (i=30;i>2;i=i-2)LCD_DrawCircle(120,205,i,VIOLET);
+            		LCD_ShowString(90,90,BLACK,GRAY,(char *)"          ");
+        			LCD_ShowString(90,90,VIOLET,GRAY,(char *)"violet");
+        			for (i=30;i>2;i=i-2)LCD_DrawCircle(120,270,i,VIOLET);
             		uart_send_string(UART_User,"×ÏµÆ£¨ºìÀ¶ºÏ³É£©:ÁÁ\r\n");
             		gchflag=0;
 				}
@@ -175,9 +188,9 @@ int main(void)
 					gpio_set(LIGHT_RED,LIGHT_ON);   
            			gpio_set(LIGHT_GREEN,LIGHT_ON);
            			gpio_set(LIGHT_BLUE,LIGHT_OFF);
-           			LCD_ShowString(70,92,BLACK,GRAY,(char *)"          ");
-        			LCD_ShowString(70,92,YELLOW,GRAY,(char *)"yellow");
-        			for (i=30;i>2;i=i-2)LCD_DrawCircle(120,205,i,YELLOW);
+           			LCD_ShowString(90,90,BLACK,GRAY,(char *)"          ");
+        			LCD_ShowString(90,90,YELLOW,GRAY,(char *)"yellow");
+        			for (i=30;i>2;i=i-2)LCD_DrawCircle(120,270,i,YELLOW);
             		uart_send_string(UART_User,"»ÆµÆ£¨ºìÂÌºÏ³É£©:ÁÁ\r\n");
             		gchflag=0;
 				}
@@ -187,9 +200,9 @@ int main(void)
 					gpio_set(LIGHT_RED,LIGHT_ON);
             		gpio_set(LIGHT_BLUE,LIGHT_ON);
             		gpio_set(LIGHT_GREEN,LIGHT_ON);
-            		LCD_ShowString(70,92,BLACK,GRAY,(char *)"          ");
-        			LCD_ShowString(70,92,WHITE,GRAY,(char *)"white");
-        			for (i=30;i>2;i=i-2)LCD_DrawCircle(120,205,i,WHITE);
+            		LCD_ShowString(90,90,BLACK,GRAY,(char *)"          ");
+        			LCD_ShowString(90,90,WHITE,GRAY,(char *)"white");
+        			for (i=30;i>2;i=i-2)LCD_DrawCircle(120,270,i,WHITE);
             		uart_send_string(UART_User,"°×µÆ£¨ºìÀ¶ÂÌºÏ³É£©:ÁÁ\r\n");
             		gchflag=0;
 				}
@@ -199,9 +212,9 @@ int main(void)
 					gpio_set(LIGHT_RED,LIGHT_OFF);
             		gpio_set(LIGHT_BLUE,LIGHT_OFF);
             		gpio_set(LIGHT_GREEN,LIGHT_OFF);
-            		LCD_ShowString(70,92,BLACK,GRAY,(char *)"          ");
-        			LCD_ShowString(70,92,BLACK,GRAY,(char *)"light off");
-        			for (i=30;i>2;i=i-2)LCD_DrawCircle(120,205,i,GRAY);
+            		LCD_ShowString(90,90,BLACK,GRAY,(char *)"          ");
+        			LCD_ShowString(90,90,BLACK,GRAY,(char *)"light off");
+        			for (i=30;i>2;i=i-2)LCD_DrawCircle(120,270,i,GRAY);
             		uart_send_string(UART_User,"¹ØµÆ\r\n");
             		gchflag=0;
 				}	   

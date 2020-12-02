@@ -66,12 +66,12 @@
             this.listBox1.Items.AddRange(new object[] {
             "连接设备功能：可用",
             "开始菜单功能：可用",
-            "实验一：功能可用（需连接设备后）",
-            "实验二：可发送单个字节字符串、十进制、十六进制数据，但有概率出现问题",
-            "实验三：不可用",
-            "实验四：不可用",
-            "实验五：不可用",
-            "实验六：功能可用，但不能点击太快"});
+            "实验一：功能可用",
+            "实验二：功能可用",
+            "实验三：未做",
+            "实验四：未做",
+            "实验五：未做",
+            "实验六：功能可用，不能点击太快"});
             this.listBox1.Location = new System.Drawing.Point(480, 200);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(485, 280);
