@@ -56,6 +56,7 @@
             this.TbShow.Location = new System.Drawing.Point(570, 141);
             this.TbShow.Multiline = true;
             this.TbShow.Name = "TbShow";
+            this.TbShow.ReadOnly = true;
             this.TbShow.Size = new System.Drawing.Size(500, 395);
             this.TbShow.TabIndex = 1;
             // 
@@ -179,6 +180,7 @@
             this.Name = "UC_UART";
             this.Size = new System.Drawing.Size(1182, 639);
             this.Load += new System.EventHandler(this.UC_UART_Load);
+            this.Leave += new System.EventHandler(this.UC_UART_Leave);
             this.ResumeLayout(false);
             this.PerformLayout();
 

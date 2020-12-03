@@ -13,13 +13,25 @@ namespace KL36_Demo_Sys._04_Control
     public partial class UC_UART : UserControl
     {
         SCI sci;
+        int RecvType;
         delegate void handleinterfaceupdatedelegate(Object textbox,
                                                     string text);
-
+        byte[] uartON = { 11, (byte)'u', (byte)'a', (byte)'r', (byte)'t', (byte)'o', (byte)'n' };
         public UC_UART()
         {
             InitializeComponent();
+            RecvType = this.CbSCIReceive.SelectedIndex;
             sci = new SCI(PublicVar.g_SCIComNum, PublicVar.g_SCIBaudRate);
+            if (sci.SCIOpen())
+            {
+                sci.SCISendFrameData(ref uartON);
+            }
+            sci.Close();
+        }
+
+        private void BtnSendData_Click(object sender, EventArgs e)
+        {
+
             if (sci.SCIOpen())
             {
                 //设置接收中断处理事件
@@ -27,16 +39,10 @@ namespace KL36_Demo_Sys._04_Control
                 //设置每接收到1个字节中断1次
                 sci.SCIReceInt(1);
             }
-            
-
-        }
-
-        private void BtnSendData_Click(object sender, EventArgs e)
-        {
             bool Flag;//判断数据发送是否成功
             int i, count = 0;//len保存发送数据的长度
             int len;
-
+            
             //0表示选择是字符发送,1表示的是十进制发送,2表示十六进制发送
             int SendType;
             SendType = CbSCISendType.SelectedIndex;
@@ -110,7 +116,6 @@ namespace KL36_Demo_Sys._04_Control
                 this.label2.Text = "数据发送失败!";
 
             }
-
         }
 
         ///-----------------------------------------------------------------
@@ -132,7 +137,6 @@ namespace KL36_Demo_Sys._04_Control
             bool Flag;//标记串口接收数据是否成功
             int len;//标记接收的数据的长度
 
-            byte[] ch2 = new byte[2];
 
             //调用串口接收函数,并返回结果
             Flag = sci.SCIReceiveData(ref PublicVar.g_ReceiveByteArray);
@@ -140,43 +144,35 @@ namespace KL36_Demo_Sys._04_Control
             {
 
                 len = PublicVar.g_ReceiveByteArray.Length;
-                //对于字符串形式,考虑到可能有汉字,
+                // 对于字符串形式,考虑到可能有汉字,
                 //直接调用系统定义的函数,处理整个字符串
                 str = Encoding.GetEncoding("GB2312").GetString(PublicVar.g_ReceiveByteArray);
-                if (str!=null && str ==TbSCISend.Text)
+                if (str != null && str == TbSCISend.Text)
                 {
-                    SCIUpdateRevtxtbox(TbShow, "字符串数据:    " + str );
+                    SCIUpdateRevtxtbox(TbShow, "字符串数据:    " + str);
                 }
                 else
                 {
                     SCIUpdateRevtxtbox(TbShow, "字符串数据:    无  ");
                 }
-                
-
                 //十进制和十六进制形式按字节进行处理
                 for (int i = 0; i < len; i++)
                 {
-
-                    
-                   //十进制都是按照三位来显示,字节之间有空格表示区分
-                   SCIUpdateRevtxtbox(TbShow, "十进制数据:    " +
-                   PublicVar.g_ReceiveByteArray[i].ToString("D3") + "  ");
-                    
-                  //十六进制都是按照两位来显示,字节之间有空格表示区分
-                  SCIUpdateRevtxtbox(TbShow, "十六进制数据: " +
-                  PublicVar.g_ReceiveByteArray[i].ToString("X2") + "  ");
-                    
-                    
+                    //十进制都是按照三位来显示,字节之间有空格表示区分
+                    SCIUpdateRevtxtbox(TbShow, "十进制数据:    " +
+                    PublicVar.g_ReceiveByteArray[i].ToString("D3") + "  ");
+                    //十六进制都是按照两位来显示,字节之间有空格表示区分
+                    SCIUpdateRevtxtbox(TbShow, "十六进制数据: " +
+                    PublicVar.g_ReceiveByteArray[i].ToString("X2") + "  ");
                 }
 
-                // sci.SCIReceInt(SCIPort, 1);//设置产生接收中断的字节数【2014-5-5 注释，否则会导致程序无响应】
-                //this.label2.Text = "过程提示:数据接收成功!";
+                //数据接收成功
             }
             //接收数据失败
             else
             {
 
-                //this.label2.Text = "过程提示:数据接收失败!";
+                //数据接收失败!";
             }
         }
         ///-----------------------------------------------------------------
@@ -314,6 +310,11 @@ namespace KL36_Demo_Sys._04_Control
                                           + ",或者退格符";
                 }
             }
+        }
+
+        private void UC_UART_Leave(object sender, EventArgs e)
+        {
+            sci.Close();
         }
     }
 }

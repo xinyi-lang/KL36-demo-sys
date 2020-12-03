@@ -17,24 +17,23 @@ namespace KL36_Demo_Sys._04_Control
         delegate void handleinterfaceupdatedelegate(Object textbox,
                                                     string text);
         byte[] recvData = new byte[100];
-        string Data;
-        byte[] control = { 8, (byte)'A', (byte)'D', (byte)'C' };
-        byte[] GetMcuTemp = {12,(byte)'m',(byte)'c',(byte)'u',(byte)'t',(byte)'e',(byte)'m',(byte)'p' };
-        byte[] GetTemp = { 9,  (byte)'t', (byte)'e', (byte)'m', (byte)'p' };
-        byte[] GetLight= { 10, (byte)'l', (byte)'i', (byte)'g', (byte)'h', (byte)'t' };
+        string[] Data = new string[3];
+        int ind;
+        byte[] uartOFF =    { 12, (byte)'u', (byte)'a', (byte)'r', (byte)'t',(byte)'o',(byte)'f',(byte)'f' };
+        byte[] control =    { 8,  (byte)'A', (byte)'D', (byte)'C' };
+        byte[] GetMcuTemp = {12,  (byte)'m', (byte)'c', (byte)'u', (byte)'t',(byte)'e',(byte)'m',(byte)'p' };
+        byte[] GetTemp =    { 9,  (byte)'t', (byte)'e', (byte)'m', (byte)'p' };
+        byte[] GetLight=    { 10, (byte)'l', (byte)'i', (byte)'g', (byte)'h', (byte)'t' };
         public UC_ADC()
         {
             InitializeComponent();
             sci = new SCI(PublicVar.g_SCIComNum, PublicVar.g_SCIBaudRate);
             if (sci.SCIOpen())
             {
-                //设置接收中断处理事件
-                sci.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SCIPort_DataReceived);
-                //设置每接收到1个字节中断1次
-                sci.SCIReceInt(1);
+                sci.SCISendFrameData(ref uartOFF);
             }
+            sci.Close();
             
-
         }
         
         ///-----------------------------------------------------------------
@@ -51,37 +50,36 @@ namespace KL36_Demo_Sys._04_Control
         private void SCIPort_DataReceived(object sender,
             System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-
             String str = String.Empty;
             bool Flag;//标记串口接收数据是否成功
             int len;//标记接收的数据的长度
-
             byte[] ch2 = new byte[2];
-
             //调用串口接收函数,并返回结果
             Flag = sci.SCIReceiveData(ref recvData);
-            if (Flag == true)//串口接收数据成功
+            if (Flag)//串口接收数据成功
             {
 
                 len = recvData.Length;
                 //对于字符串形式,考虑到可能有汉字,
                 //直接调用系统定义的函数,处理整个字符串
                 str = Encoding.GetEncoding("GB2312").GetString(recvData);
-                if (str != null && str != Data)
+                if (str != null)
                 {
-                    Data = str ;
+                    Data[ind] = str;
+
                 }
                 else
                 {
-                    SCIUpdateRevtxtbox(textBox1, "无数据");
+                    Data[ind] = null;
                 }
 
             }
             //接收数据失败
             else
             {
-               this.textBox1.Text = "过程提示:数据接收失败!";
+                this.textBox1.Text = "数据接收失败!";
             }
+            
         }
 
         ///-----------------------------------------------------------------
@@ -117,25 +115,37 @@ namespace KL36_Demo_Sys._04_Control
         }
         private void BtnGetTemp_Click(object sender, EventArgs e)
         {
-            
+            if (sci.SCIOpen())
+            {
+                //设置接收中断处理事件
+                sci.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SCIPort_DataReceived);
+                //设置每接收到1个字节中断1次
+                sci.SCIReceInt(1);
+            }
+            ind = 0;
             sci.SCISendFrameData(ref control);
             sci.SCISendFrameData(ref GetTemp);
             timer1.Start();
-
+            
         }
 
         private void BtnGetLight_Click(object sender, EventArgs e)
         {
-                
+            ind = 1;    
             sci.SCISendFrameData(ref control);
             sci.SCISendFrameData(ref GetLight);
             timer2.Start();
+           
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            SCIUpdateRevtxtbox(textBox1, "环境温度：" + Data + "°C");
-            timer1.Stop();
+            if (Data[ind] != null)
+            {
+                SCIUpdateRevtxtbox(textBox1, "环境温度：" + Data[ind] + "°C");
+                timer1.Stop();
+            }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -151,23 +161,38 @@ namespace KL36_Demo_Sys._04_Control
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            SCIUpdateRevtxtbox(textBox1, "光照强度："+Data );
-            timer2.Stop();
+            
+            if (Data[ind] != null)
+            {
+                SCIUpdateRevtxtbox(textBox1, "光照强度：" + Data[ind]);
+                timer2.Stop();
+            }
+            
         }
 
         private void timer3_Tick(object sender, EventArgs e)
         {
 
-            this.label3.Text = Data + "°C";
-            timer3.Stop();
-            
+            if (Data[ind] != null)
+            {
+                this.label3.Text = Data[ind] + "°C";
+                timer3.Stop();
+            }
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            ind = 2;
             sci.SCISendFrameData(ref control);
             sci.SCISendFrameData(ref GetMcuTemp);
             timer3.Start();
+            
+        }
+
+        private void UC_ADC_Leave(object sender, EventArgs e)
+        {
+            sci.Close();
         }
     }
 }

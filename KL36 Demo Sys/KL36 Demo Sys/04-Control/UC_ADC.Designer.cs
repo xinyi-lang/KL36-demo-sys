@@ -128,7 +128,7 @@
             // 
             // timer3
             // 
-            this.timer3.Interval = 2000;
+            this.timer3.Interval = 1000;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // button3
@@ -157,6 +157,7 @@
             this.Name = "UC_ADC";
             this.Size = new System.Drawing.Size(1182, 639);
             this.Load += new System.EventHandler(this.UC_ADC_Load);
+            this.Leave += new System.EventHandler(this.UC_ADC_Leave);
             this.ResumeLayout(false);
             this.PerformLayout();
 

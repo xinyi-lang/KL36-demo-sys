@@ -1190,7 +1190,7 @@ LOAD c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/
  .FlashConfig   0x00006c00       0x10 ./obj/startup_MKL36Z4.o
                 0x00006c10                . = ALIGN (0x4)
 
-.text           0x00006c10     0x7fa4
+.text           0x00006c10     0x8018
                 0x00006c10                . = ALIGN (0x4)
  *(.text)
  .text          0x00006c10       0x48 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
@@ -1470,157 +1470,157 @@ LOAD c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/
                 0x0000ca66                Address_set
  *fill*         0x0000cb1e        0x2 
  .text.UART0_IRQHandler
-                0x0000cb20      0x16c ./obj/isr.o
+                0x0000cb20      0x1d0 ./obj/isr.o
                 0x0000cb20                UART0_IRQHandler
  .text.SysTick_Handler
-                0x0000cc8c       0x34 ./obj/isr.o
-                0x0000cc8c                SysTick_Handler
- .text.SecAdd1  0x0000ccc0       0x68 ./obj/isr.o
-                0x0000ccc0                SecAdd1
+                0x0000ccf0       0x34 ./obj/isr.o
+                0x0000ccf0                SysTick_Handler
+ .text.SecAdd1  0x0000cd24       0x68 ./obj/isr.o
+                0x0000cd24                SecAdd1
  .text.out_char
-                0x0000cd28       0x20 ./obj/printf.o
-                0x0000cd28                out_char
+                0x0000cd8c       0x20 ./obj/printf.o
+                0x0000cd8c                out_char
  .text.printk_putc
-                0x0000cd48       0x4c ./obj/printf.o
+                0x0000cdac       0x4c ./obj/printf.o
  .text.printk_mkfloatstr
-                0x0000cd94      0x27c ./obj/printf.o
-                0x0000cd94                printk_mkfloatstr
+                0x0000cdf8      0x27c ./obj/printf.o
+                0x0000cdf8                printk_mkfloatstr
  .text.printk_mknumstr
-                0x0000d010       0xf8 ./obj/printf.o
+                0x0000d074       0xf8 ./obj/printf.o
  .text.printk_pad_zero
-                0x0000d108       0x32 ./obj/printf.o
+                0x0000d16c       0x32 ./obj/printf.o
  .text.printk_pad_space
-                0x0000d13a       0x32 ./obj/printf.o
- .text.printk   0x0000d16c      0x74c ./obj/printf.o
-                0x0000d16c                printk
+                0x0000d19e       0x32 ./obj/printf.o
+ .text.printk   0x0000d1d0      0x74c ./obj/printf.o
+                0x0000d1d0                printk
  .text.myprintf
-                0x0000d8b8       0x3c ./obj/printf.o
-                0x0000d8b8                myprintf
- .text.log      0x0000d8f4      0x110 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-w_log.o)
-                0x0000d8f4                log
+                0x0000d91c       0x3c ./obj/printf.o
+                0x0000d91c                myprintf
+ .text.log      0x0000d958      0x110 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-w_log.o)
+                0x0000d958                log
  .text.__ieee754_log
-                0x0000da04      0x3ac c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-e_log.o)
-                0x0000da04                __ieee754_log
- .text.matherr  0x0000ddb0        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-s_matherr.o)
-                0x0000ddb0                matherr
- .text.nan      0x0000ddb4        0xc c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-s_nan.o)
-                0x0000ddb4                nan
- .text.__errno  0x0000ddc0        0xc c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libg_nano.a(lib_a-errno.o)
-                0x0000ddc0                __errno
- .text.memset   0x0000ddcc       0x10 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libg_nano.a(lib_a-memset.o)
-                0x0000ddcc                memset
- .text.strncmp  0x0000dddc       0x22 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libg_nano.a(lib_a-strncmp.o)
-                0x0000dddc                strncmp
+                0x0000da68      0x3ac c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-e_log.o)
+                0x0000da68                __ieee754_log
+ .text.matherr  0x0000de14        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-s_matherr.o)
+                0x0000de14                matherr
+ .text.nan      0x0000de18        0xc c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-s_nan.o)
+                0x0000de18                nan
+ .text.__errno  0x0000de24        0xc c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libg_nano.a(lib_a-errno.o)
+                0x0000de24                __errno
+ .text.memset   0x0000de30       0x10 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libg_nano.a(lib_a-memset.o)
+                0x0000de30                memset
+ .text.strncmp  0x0000de40       0x22 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libg_nano.a(lib_a-strncmp.o)
+                0x0000de40                strncmp
  *(.rodata)
- *fill*         0x0000ddfe        0x2 
- .rodata        0x0000de00       0x2f ./obj/emuart.o
- *fill*         0x0000de2f        0x1 
- .rodata        0x0000de30      0x15b ./obj/main.o
- *fill*         0x0000df8b        0x1 
- .rodata        0x0000df8c       0x26 ./obj/gec.o
- *fill*         0x0000dfb2        0x2 
- .rodata        0x0000dfb4       0x5e ./obj/isr.o
- *fill*         0x0000e012        0x2 
- .rodata        0x0000e014       0x80 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(divsf3.o)
- .rodata        0x0000e094       0x40 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(mulsf3.o)
- .rodata        0x0000e0d4       0x40 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(divdf3.o)
- .rodata        0x0000e114       0x40 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(muldf3.o)
+ *fill*         0x0000de62        0x2 
+ .rodata        0x0000de64       0x2f ./obj/emuart.o
+ *fill*         0x0000de93        0x1 
+ .rodata        0x0000de94      0x15b ./obj/main.o
+ *fill*         0x0000dfef        0x1 
+ .rodata        0x0000dff0       0x26 ./obj/gec.o
+ *fill*         0x0000e016        0x2 
+ .rodata        0x0000e018       0x6e ./obj/isr.o
+ *fill*         0x0000e086        0x2 
+ .rodata        0x0000e088       0x80 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(divsf3.o)
+ .rodata        0x0000e108       0x40 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(mulsf3.o)
+ .rodata        0x0000e148       0x40 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(divdf3.o)
+ .rodata        0x0000e188       0x40 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(muldf3.o)
  *(.rodata*)
  .rodata.adc_init_inner
-                0x0000e154       0x18 ./obj/adc.o
- .rodata.GB_16  0x0000e16c      0x198 ./obj/main.o
+                0x0000e1c8       0x18 ./obj/adc.o
+ .rodata.GB_16  0x0000e1e0      0x198 ./obj/main.o
  .rodata.PORT_ARR
-                0x0000e304       0x14 ./obj/gpio.o
-                0x0000e304                PORT_ARR
+                0x0000e378       0x14 ./obj/gpio.o
+                0x0000e378                PORT_ARR
  .rodata.GPIO_ARR
-                0x0000e318       0x14 ./obj/gpio.o
-                0x0000e318                GPIO_ARR
+                0x0000e38c       0x14 ./obj/gpio.o
+                0x0000e38c                GPIO_ARR
  .rodata.UART_ARR
-                0x0000e32c        0x8 ./obj/uart.o
-                0x0000e32c                UART_ARR
+                0x0000e3a0        0x8 ./obj/uart.o
+                0x0000e3a0                UART_ARR
  .rodata.nAsciiDot
-                0x0000e334      0x600 ./obj/lcd.o
- .rodata.GB_16  0x0000e934      0x198 ./obj/lcd.o
+                0x0000e3a8      0x600 ./obj/lcd.o
+ .rodata.GB_16  0x0000e9a8      0x198 ./obj/lcd.o
  .rodata.printk
-                0x0000eacc       0xc8 ./obj/printf.o
+                0x0000eb40       0xc8 ./obj/printf.o
  .rodata.log.str1.4
-                0x0000eb94        0x8 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-w_log.o)
+                0x0000ec08        0x8 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m\libm.a(lib_a-w_log.o)
                                   0x5 (size before relaxing)
  *(.glue_7)
- .glue_7        0x0000eb9c        0x0 linker stubs
+ .glue_7        0x0000ec10        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0000eb9c        0x0 linker stubs
+ .glue_7t       0x0000ec10        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0000eb9c        0x0 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
+ .eh_frame      0x0000ec10        0x0 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
  *(.init)
- .init          0x0000eb9c        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crti.o
-                0x0000eb9c                _init
- .init          0x0000eba0        0x8 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtn.o
+ .init          0x0000ec10        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crti.o
+                0x0000ec10                _init
+ .init          0x0000ec14        0x8 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtn.o
  *(.fini)
- .fini          0x0000eba8        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crti.o
-                0x0000eba8                _fini
- .fini          0x0000ebac        0x8 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtn.o
-                0x0000ebb4                . = ALIGN (0x4)
+ .fini          0x0000ec1c        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crti.o
+                0x0000ec1c                _fini
+ .fini          0x0000ec20        0x8 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtn.o
+                0x0000ec28                . = ALIGN (0x4)
 
-.vfp11_veneer   0x0000ebb4        0x0
- .vfp11_veneer  0x0000ebb4        0x0 linker stubs
+.vfp11_veneer   0x0000ec28        0x0
+ .vfp11_veneer  0x0000ec28        0x0 linker stubs
 
-.v4_bx          0x0000ebb4        0x0
- .v4_bx         0x0000ebb4        0x0 linker stubs
+.v4_bx          0x0000ec28        0x0
+ .v4_bx         0x0000ec28        0x0 linker stubs
 
-.iplt           0x0000ebb4        0x0
- .iplt          0x0000ebb4        0x0 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
+.iplt           0x0000ec28        0x0
+ .iplt          0x0000ec28        0x0 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x0000ebb4        0x8
-                0x0000ebb4                __exidx_start = .
+.ARM            0x0000ec28        0x8
+                0x0000ec28                __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x0000ebb4        0x8 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(_udivmoddi4.o)
-                0x0000ebbc                __exidx_end = .
+ .ARM.exidx     0x0000ec28        0x8 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m\libgcc.a(_udivmoddi4.o)
+                0x0000ec30                __exidx_end = .
 
-.rel.dyn        0x0000ebbc        0x0
- .rel.iplt      0x0000ebbc        0x0 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
+.rel.dyn        0x0000ec30        0x0
+ .rel.iplt      0x0000ec30        0x0 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
 
-.ctors          0x0000ebbc        0x0
-                0x0000ebbc                __CTOR_LIST__ = .
+.ctors          0x0000ec30        0x0
+                0x0000ec30                __CTOR_LIST__ = .
  *crtbegin.o(.ctors)
  *crtbegin?.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
  *(SORT_BY_NAME(.ctors.*))
  *(.ctors)
-                0x0000ebbc                __CTOR_END__ = .
+                0x0000ec30                __CTOR_END__ = .
 
-.dtors          0x0000ebbc        0x0
-                0x0000ebbc                __DTOR_LIST__ = .
+.dtors          0x0000ec30        0x0
+                0x0000ec30                __DTOR_LIST__ = .
  *crtbegin.o(.dtors)
  *crtbegin?.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o *crtend?.o) .dtors)
  *(SORT_BY_NAME(.dtors.*))
  *(.dtors)
-                0x0000ebbc                __DTOR_END__ = .
+                0x0000ec30                __DTOR_END__ = .
 
-.preinit_array  0x0000ebbc        0x0
-                0x0000ebbc                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x0000ec30        0x0
+                0x0000ec30                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x0000ebbc                PROVIDE (__preinit_array_end, .)
+                0x0000ec30                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x0000ebbc        0x4
-                0x0000ebbc                PROVIDE (__init_array_start, .)
+.init_array     0x0000ec30        0x4
+                0x0000ec30                PROVIDE (__init_array_start, .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x0000ebbc        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
-                0x0000ebc0                PROVIDE (__init_array_end, .)
+ .init_array    0x0000ec30        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
+                0x0000ec34                PROVIDE (__init_array_end, .)
 
-.fini_array     0x0000ebc0        0x4
+.fini_array     0x0000ec34        0x4
                 [!provide]                PROVIDE (__fini_array_start, .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0000ebc0        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
+ .fini_array    0x0000ec34        0x4 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
                 [!provide]                PROVIDE (__fini_array_end, .)
-                0x0000ebc4                __etext = .
-                0x0000ebc4                __DATA_ROM = .
+                0x0000ec38                __etext = .
+                0x0000ec38                __DATA_ROM = .
 
 .mac_config     0x0000fc00        0x0
                 0x0000fc00                . = ALIGN (0x4)
@@ -1634,7 +1634,7 @@ LOAD c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/
                 0x20000400                . = ALIGN (0x8)
                 0x20000400                _mtb_end = .
 
-.data           0x20000400       0x74 load address 0x0000ebc4
+.data           0x20000400       0x74 load address 0x0000ec38
                 0x20000400                . = ALIGN (0x4)
                 0x20000400                __DATA_RAM = .
                 0x20000400                __data_start__ = .
@@ -1664,12 +1664,12 @@ LOAD c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/
  *(.jcr*)
                 0x20000474                . = ALIGN (0x4)
                 0x20000474                __data_end__ = .
-                0x0000ec38                __DATA_END = (__DATA_ROM + (__data_end__ - __data_start__))
+                0x0000ecac                __DATA_END = (__DATA_ROM + (__data_end__ - __data_start__))
 
-.igot.plt       0x20000474        0x0 load address 0x0000ec38
+.igot.plt       0x20000474        0x0 load address 0x0000ecac
  .igot.plt      0x20000474        0x0 c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v6-m/crtbegin.o
 
-.bss            0x20000474      0x430 load address 0x0000ec38
+.bss            0x20000474      0x430 load address 0x0000ecac
                 0x20000474                . = ALIGN (0x4)
                 0x20000474                __START_BSS = .
                 0x20000474                __bss_start__ = .
@@ -1680,7 +1680,7 @@ LOAD c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/
                 0x20000490        0x2 ./obj/emuart.o
  .bss.length.5052
                 0x20000492        0x2 ./obj/emuart.o
- .bss.SysTickCount.5194
+ .bss.SysTickCount.5195
                 0x20000494        0x1 ./obj/isr.o
  *(COMMON)
  *fill*         0x20000495        0x3 
@@ -1696,7 +1696,7 @@ LOAD c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/
                 0x200008a4                __bss_end__ = .
                 0x200008a4                __END_BSS = .
 
-.heap           0x200008a4      0x204 load address 0x0000f068
+.heap           0x200008a4      0x204 load address 0x0000f0dc
                 0x200008a8                . = ALIGN (0x8)
  *fill*         0x200008a4        0x4 
                 0x200008a8                __end__ = .
@@ -1706,7 +1706,7 @@ LOAD c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/
  *fill*         0x200008a8      0x200 
                 0x20000aa8                __HeapLimit = .
 
-.stack          0x20000aa8      0x100 load address 0x0000f26c
+.stack          0x20000aa8      0x100 load address 0x0000f2e0
                 0x20000aa8                . = ALIGN (0x8)
                 0x20000ba8                . = (. + STACK_SIZE)
  *fill*         0x20000aa8      0x100 
@@ -1844,7 +1844,7 @@ LOAD c:/program files (x86)/easily-tools/gcc/bin/../lib/gcc/arm-none-eabi/7.2.1/
                 0x00000001                ASSERT ((__StackLimit >= __HeapLimit), region m_data overflowed with stack and heap)
 OUTPUT(KL36_Demo_Sys.elf elf32-littlearm)
 
-.debug_info     0x00000000     0x917b
+.debug_info     0x00000000     0x9189
  .debug_info    0x00000000      0xb6d ./obj/emuart.o
  .debug_info    0x00000b6d      0xe43 ./obj/adc.o
  .debug_info    0x000019b0      0x402 ./obj/system_MKL36Z4.o
@@ -1857,9 +1857,9 @@ OUTPUT(KL36_Demo_Sys.elf elf32-littlearm)
  .debug_info    0x00004a55      0x9c9 ./obj/gec.o
  .debug_info    0x0000541e     0x12d1 ./obj/uart.o
  .debug_info    0x000066ef     0x1102 ./obj/lcd.o
- .debug_info    0x000077f1      0xaca ./obj/isr.o
- .debug_info    0x000082bb      0xe9a ./obj/printf.o
- .debug_info    0x00009155       0x26 ./obj/startup_MKL36Z4.o
+ .debug_info    0x000077f1      0xad8 ./obj/isr.o
+ .debug_info    0x000082c9      0xe9a ./obj/printf.o
+ .debug_info    0x00009163       0x26 ./obj/startup_MKL36Z4.o
 
 .debug_abbrev   0x00000000     0x1d87
  .debug_abbrev  0x00000000      0x272 ./obj/emuart.o
@@ -1988,7 +1988,7 @@ OUTPUT(KL36_Demo_Sys.elf elf32-littlearm)
  .debug_macro   0x0000faf1      0x223 ./obj/isr.o
  .debug_macro   0x0000fd14      0x1a0 ./obj/printf.o
 
-.debug_line     0x00000000     0x3dd7
+.debug_line     0x00000000     0x3ded
  .debug_line    0x00000000      0x486 ./obj/emuart.o
  .debug_line    0x00000486      0x423 ./obj/adc.o
  .debug_line    0x000008a9      0x28a ./obj/system_MKL36Z4.o
@@ -2001,9 +2001,9 @@ OUTPUT(KL36_Demo_Sys.elf elf32-littlearm)
  .debug_line    0x000022a0      0x3c9 ./obj/gec.o
  .debug_line    0x00002669      0x539 ./obj/uart.o
  .debug_line    0x00002ba2      0x745 ./obj/lcd.o
- .debug_line    0x000032e7      0x4c0 ./obj/isr.o
- .debug_line    0x000037a7      0x5c2 ./obj/printf.o
- .debug_line    0x00003d69       0x6e ./obj/startup_MKL36Z4.o
+ .debug_line    0x000032e7      0x4d6 ./obj/isr.o
+ .debug_line    0x000037bd      0x5c2 ./obj/printf.o
+ .debug_line    0x00003d7f       0x6e ./obj/startup_MKL36Z4.o
 
 .debug_str      0x00000000    0x4fffd
  .debug_str     0x00000000    0x4dd70 ./obj/emuart.o
@@ -2031,7 +2031,7 @@ OUTPUT(KL36_Demo_Sys.elf elf32-littlearm)
  .debug_str     0x0004fc94      0x192 ./obj/lcd.o
                               0x4e69a (size before relaxing)
  .debug_str     0x0004fe26       0x54 ./obj/isr.o
-                              0x4eefc (size before relaxing)
+                              0x4ef03 (size before relaxing)
  .debug_str     0x0004fe7a      0x15d ./obj/printf.o
                               0x4e5ab (size before relaxing)
  .debug_str     0x0004ffd7       0x26 ./obj/startup_MKL36Z4.o

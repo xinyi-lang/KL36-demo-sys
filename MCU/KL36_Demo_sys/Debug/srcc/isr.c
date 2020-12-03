@@ -18,10 +18,10 @@ void SecAdd1(uint8_t *p);
 void UART_User_Handler(void)
 {
     uint8_t ch;
-	uint8_t flag,mFlag;
+	uint8_t flag,mFlag,chflag;
     uint32_t i;
     uint8_t flashRead[2048];
-
+  
 
 	DISABLE_INTERRUPTS;      //关总中断
 	//------------------------------------------------------------------
@@ -32,7 +32,19 @@ void UART_User_Handler(void)
 	if(flag==0)  goto UARTA_IRQHandler_Exit;     //若没有成功接收数据，直接退出
 	//（2）调用组帧程序，对接收到的数据组帧
 	gcRecvLen = emuart_recv(ch,gcRecvBuf);         //组帧程序仅当组帧完成时返回非0帧长
-//	uart_send1(UART_User,ch);
+     if(gcRecvBuf[0]==11&&strncmp((char *)(gcRecvBuf+1),"uarton",6) == 0)
+    {
+    	chflag=1;
+    }
+    if(gcRecvBuf[0]==12&&strncmp((char *)(gcRecvBuf+1),"uartoff",7) == 0)
+    {
+    	chflag=0;
+    }
+    if(chflag==1)
+    {
+    	uart_send1(UART_User,ch);
+    }
+    
 	if(gcRecvLen == 0) goto UARTA_IRQHandler_Exit;//未组帧直接退出
     if(gcRecvBuf[0]==8&&strncmp((char *)(gcRecvBuf+1),"LED",3) == 0)
     {

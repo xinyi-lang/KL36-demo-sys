@@ -26,6 +26,7 @@ namespace KL36_Demo_Sys._04_Control
         {
             InitializeComponent();
             sci = new SCI(PublicVar.g_SCIComNum, PublicVar.g_SCIBaudRate);
+            
         }
 
         private void UC_GPIO_Load(object sender, EventArgs e)
@@ -37,6 +38,7 @@ namespace KL36_Demo_Sys._04_Control
 
         private void BtnLedBlue_Click(object sender, EventArgs e)
         {
+            
             if (sci.SCIOpen())//串口打开成功
             {
                 sci.SCISendFrameData(ref control);

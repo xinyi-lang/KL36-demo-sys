@@ -16,7 +16,6 @@ namespace KL36_Demo_Sys
     {
 
         public int count;
-
         UC_Introduction uci = new UC_Introduction();
         public FrmMain()
         {
@@ -69,7 +68,7 @@ namespace KL36_Demo_Sys
 
         private void FrmMain_ControlRemoved(object sender, ControlEventArgs e)
         {
-            
+ 
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -112,6 +111,11 @@ namespace KL36_Demo_Sys
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
 
+        }
+
+        private void panelControls_ControlRemoved(object sender, ControlEventArgs e)
+        {
+            
         }
     }
 }
