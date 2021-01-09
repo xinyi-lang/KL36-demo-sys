@@ -20,7 +20,7 @@ namespace KL36_Demo_Sys._04_Control
         string[] Data = new string[3];
         int ind;
         byte[] uartOFF =    { 12, (byte)'u', (byte)'a', (byte)'r', (byte)'t',(byte)'o',(byte)'f',(byte)'f' };
-        byte[] control =    { 8,  (byte)'A', (byte)'D', (byte)'C' };
+        byte[] Confirm =    { 8,  (byte)'A', (byte)'D', (byte)'C' };
         byte[] GetMcuTemp = {12,  (byte)'m', (byte)'c', (byte)'u', (byte)'t',(byte)'e',(byte)'m',(byte)'p' };
         byte[] GetTemp =    { 9,  (byte)'t', (byte)'e', (byte)'m', (byte)'p' };
         byte[] GetLight=    { 10, (byte)'l', (byte)'i', (byte)'g', (byte)'h', (byte)'t' };
@@ -123,7 +123,7 @@ namespace KL36_Demo_Sys._04_Control
                 sci.SCIReceInt(1);
             }
             ind = 0;
-            sci.SCISendFrameData(ref control);
+            sci.SCISendFrameData(ref Confirm);
             sci.SCISendFrameData(ref GetTemp);
             timer1.Start();
             
@@ -132,7 +132,7 @@ namespace KL36_Demo_Sys._04_Control
         private void BtnGetLight_Click(object sender, EventArgs e)
         {
             ind = 1;    
-            sci.SCISendFrameData(ref control);
+            sci.SCISendFrameData(ref Confirm);
             sci.SCISendFrameData(ref GetLight);
             timer2.Start();
            
@@ -184,7 +184,7 @@ namespace KL36_Demo_Sys._04_Control
         private void button3_Click(object sender, EventArgs e)
         {
             ind = 2;
-            sci.SCISendFrameData(ref control);
+            sci.SCISendFrameData(ref Confirm);
             sci.SCISendFrameData(ref GetMcuTemp);
             timer3.Start();
             

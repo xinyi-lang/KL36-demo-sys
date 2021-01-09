@@ -233,7 +233,6 @@ namespace KL36_Demo_Sys
         public byte[] send(byte[] SendByteArray, int time = 500, int cnt = 1)
         {
             //（1）定义并初始化局部变量
-            int length;
             byte[] RecvData = null;
             try
             {
@@ -458,7 +457,7 @@ namespace KL36_Demo_Sys
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
                 return false;
             }
             return true;

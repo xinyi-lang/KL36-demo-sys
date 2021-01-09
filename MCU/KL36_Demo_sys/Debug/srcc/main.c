@@ -57,7 +57,7 @@ int main(void)
     LCD_ShowCharactor(145,20,BLACK,GRAY,GB_16[9].Msk);
     LCD_ShowCharactor(160,20,BLACK,GRAY,GB_16[10].Msk);
     LCD_ShowCharactor(175,20,BLACK,GRAY,GB_16[11].Msk);
-    LCD_ShowString(60,50,RED,GRAY,(char *)"PC not connected");
+    LCD_ShowString(60,50,RED,GRAY,(char *)" Not Connected");
 
     LCD_ShowString(6,90,BLACK,GRAY,(char *)"LED_Color:");
     LCD_aotu(4,110,236,120,1);
@@ -87,6 +87,7 @@ int main(void)
     //（2）======主循环部分（开头）=========================================
     for(;;)     //for(;;)（开头）
     {
+    	
         //（2.1）主循环次数变量+1
         mMainLoopCount++;
         //（2.2）未达到主循环次数设定值，继续循环
@@ -103,7 +104,7 @@ int main(void)
 					mcu_temp=TempTrans(mcu_temp_AD);
 					NumToStr_float(mcu_temp,1,data);
 					uart_send_string(UART_User,data);
-					LCD_ShowString(100,160,BLACK,GRAY,(char *)data);
+					LCD_ShowString(100,160,GREEN,GRAY,(char *)data);
 					gadflag=0;
 				}
 			if(gcRecvBuf[0]==12&&strncmp((char *)(gcRecvBuf+1),"mcutemp",7) == 0)
@@ -111,7 +112,7 @@ int main(void)
 					temperature = TempRegression(adc_read(AD_BOARD_TEMP));
         			NumToStr_float(temperature,1,data);
 					uart_send_string(UART_User,data);
-					LCD_ShowString(80,125,BLACK,GRAY,(char *)data);
+					LCD_ShowString(80,125,GREEN,GRAY,(char *)data);
         			gadflag=0;
 				}
 			if(gcRecvBuf[0]==10&&strncmp((char *)(gcRecvBuf+1),"light",7) == 0)
@@ -119,7 +120,7 @@ int main(void)
 					light = adc_read(AD_BRIGHT);
         			NumToStr_float(light/10.0,1,data);
         			uart_send_string(UART_User,data);
-        			LCD_ShowString(135,195,BLACK,GRAY,(char *)data);
+        			LCD_ShowString(135,195,GREEN,GRAY,(char *)data);
                 	gadflag=0;
 				}
        

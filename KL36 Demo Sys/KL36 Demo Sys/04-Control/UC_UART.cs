@@ -9,18 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KL36_Demo_Sys._04_Control
-{
-    public partial class UC_UART : UserControl
+{ public partial class UC_UART : UserControl
     {
         SCI sci;
-        int RecvType;
+        byte[] uartON = { 11, (byte)'u', (byte)'a', (byte)'r', (byte)'t', (byte)'o', (byte)'n' };
         delegate void handleinterfaceupdatedelegate(Object textbox,
                                                     string text);
-        byte[] uartON = { 11, (byte)'u', (byte)'a', (byte)'r', (byte)'t', (byte)'o', (byte)'n' };
+        
         public UC_UART()
         {
             InitializeComponent();
-            RecvType = this.CbSCIReceive.SelectedIndex;
+            UartConfrim();
+        }
+        public void UartConfrim()
+        {
             sci = new SCI(PublicVar.g_SCIComNum, PublicVar.g_SCIBaudRate);
             if (sci.SCIOpen())
             {
@@ -28,23 +30,18 @@ namespace KL36_Demo_Sys._04_Control
             }
             sci.Close();
         }
-
         private void BtnSendData_Click(object sender, EventArgs e)
         {
-
-            if (sci.SCIOpen())
-            {
-                //设置接收中断处理事件
-                sci.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SCIPort_DataReceived);
-                //设置每接收到1个字节中断1次
-                sci.SCIReceInt(1);
-            }
-            bool Flag;//判断数据发送是否成功
-            int i, count = 0;//len保存发送数据的长度
+            bool Flag;
+            //判断数据发送是否成功
+            int count = 0;
+            //len保存发送数据的长度
             int len;
-            
-            //0表示选择是字符发送,1表示的是十进制发送,2表示十六进制发送
             int SendType;
+
+            SetInt();
+            //0表示选择是字符发送,1表示的是十进制发送,2表示十六进制发送
+
             SendType = CbSCISendType.SelectedIndex;
 
             //定义一个ArrayList类的实例对象,实现一个数组,其大小在添加元
@@ -56,22 +53,21 @@ namespace KL36_Demo_Sys._04_Control
             //如果发送数据为空
             if (this.TbSCISend.Text == string.Empty)
             {
-                this.label2.Text += "发送数据不得为空!";
+                this.DisplayInformation.Text += "发送数据不得为空!";
                 return;
             }
 
             if (SendType == 0)//选择的是以字符串方式发送
             {
 
-                this.label2.Text = "以字符串方式发送数据!";
+                this.DisplayInformation.Text = "以字符串方式发送数据!";
                 //将要发送的数据进行编码,并获取编码后的数据长度
-                len = System.Text.Encoding.Default.GetBytes(this.TbSCISend.Text).Length;
-                //sci.SCIReceInt(SCIPort,len);//设置产生接收中断的字节数  【2014-5-5 注释，否则会导致程序无响应】
+                len = Encoding.Default.GetBytes(this.TbSCISend.Text).Length;
                 //动态分配len字节单元内容用来存放发送数据
                 PublicVar.g_SendByteArray = new byte[len];
                 //获取TbSCISend文本的码值
                 PublicVar.g_SendByteArray =
-                  System.Text.Encoding.Default.GetBytes(this.TbSCISend.Text);
+                  Encoding.Default.GetBytes(this.TbSCISend.Text);
 
             }
             else //选择的是以十进制或者是十六进制发送数据
@@ -100,7 +96,7 @@ namespace KL36_Demo_Sys._04_Control
                 PublicVar.g_SendByteArray = new byte[count];
 
                 //将已经转化后的数据放入到全局变量g_SendByteArray中
-                for (i = 0; i < count; i++)
+                for (int i = 0; i < count; i++)
                     PublicVar.g_SendByteArray[i] = (byte)SendData[i];
             }
 
@@ -108,16 +104,26 @@ namespace KL36_Demo_Sys._04_Control
             Flag = sci.SCISendData(ref PublicVar.g_SendByteArray);
             if (Flag == true)//数据发送成功
             {
-                this.label2.Text = "数据发送成功!";
+                this.DisplayInformation.Text = "数据发送成功!";
 
             }
             else
             {
-                this.label2.Text = "数据发送失败!";
+                this.DisplayInformation.Text = "数据发送失败!";
 
             }
         }
+        public void SetInt()
+        {
+            if (sci.SCIOpen())
+            {
+                //设置接收中断处理事件
+                sci.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SCIPort_DataReceived);
+                //设置每接收到1个字节中断1次
+                sci.SCIReceInt(1);
+            }
 
+        }
         ///-----------------------------------------------------------------
         /// <summary>                                                       
         /// 对    象:SCIPort                                                
@@ -132,17 +138,14 @@ namespace KL36_Demo_Sys._04_Control
         private void SCIPort_DataReceived(object sender,
             System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            
             String str = String.Empty;
             bool Flag;//标记串口接收数据是否成功
             int len;//标记接收的数据的长度
-
 
             //调用串口接收函数,并返回结果
             Flag = sci.SCIReceiveData(ref PublicVar.g_ReceiveByteArray);
             if (Flag == true)//串口接收数据成功
             {
-
                 len = PublicVar.g_ReceiveByteArray.Length;
                 // 对于字符串形式,考虑到可能有汉字,
                 //直接调用系统定义的函数,处理整个字符串
@@ -167,12 +170,6 @@ namespace KL36_Demo_Sys._04_Control
                 }
 
                 //数据接收成功
-            }
-            //接收数据失败
-            else
-            {
-
-                //数据接收失败!";
             }
         }
         ///-----------------------------------------------------------------
@@ -250,7 +247,7 @@ namespace KL36_Demo_Sys._04_Control
                                     + e.KeyChar - '0' > 255)
                             {
                                 e.Handled = true;
-                                this.label2.Text = "输入数据不得大于255";
+                                this.DisplayInformation.Text = "输入数据不得大于255";
                             }
                             //默认情况下是允许输入的,即e.Handled = false
                         }
@@ -259,7 +256,7 @@ namespace KL36_Demo_Sys._04_Control
                 else
                 {
                     e.Handled = true;//除了逗号、数字0~9,其他都不给输入
-                    this.label2.Text = "输入数据必须是0-9,或者逗号"
+                    this.DisplayInformation.Text = "输入数据必须是0-9,或者逗号"
                                           + ",或者退格符";
                 }
             }
@@ -282,7 +279,7 @@ namespace KL36_Demo_Sys._04_Control
                                 + (e.KeyChar - '0') > 255)
                             {
                                 e.Handled = true;
-                                this.label2.Text = "输入数据不得大于255";
+                                this.DisplayInformation.Text = "输入数据不得大于255";
                             }
                         }
                     }
@@ -298,7 +295,7 @@ namespace KL36_Demo_Sys._04_Control
                                 + (Char.ToUpper(e.KeyChar) - 'A') > 255)
                             {
                                 e.Handled = true;
-                                this.label2.Text = "输入数据不得大于255";
+                                this.DisplayInformation.Text = "输入数据不得大于255";
                             }
                         }
                     }
@@ -306,16 +303,13 @@ namespace KL36_Demo_Sys._04_Control
                 else
                 {
                     e.Handled = true;
-                    this.label2.Text = "输入数据必须是0-9,a-f,A-F,或者逗号"
+                    this.DisplayInformation.Text = "输入数据必须是0-9,a-f,A-F,或者逗号"
                                           + ",或者退格符";
                 }
             }
         }
 
-        private void UC_UART_Leave(object sender, EventArgs e)
-        {
-            sci.Close();
-        }
+
     }
 }
 

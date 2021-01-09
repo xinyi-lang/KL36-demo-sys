@@ -64,6 +64,7 @@
     <Compile Include="03-Function\SCI.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="03-Function\UART.cs" />
     <Compile Include="04-Control\UC_ADC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -82,11 +83,23 @@
     <Compile Include="04-Control\UC_Introduction.Designer.cs">
       <DependentUpon>UC_Introduction.cs</DependentUpon>
     </Compile>
+    <Compile Include="04-Control\UC_ReceivedDataDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="04-Control\UC_ReceivedDataDisplay.Designer.cs">
+      <DependentUpon>UC_ReceivedDataDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="04-Control\UC_SelectUart.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="04-Control\UC_SelectUart.Designer.cs">
       <DependentUpon>UC_SelectUart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="04-Control\UC_Timer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="04-Control\UC_Timer.Designer.cs">
+      <DependentUpon>UC_Timer.cs</DependentUpon>
     </Compile>
     <Compile Include="04-Control\UC_UART.cs">
       <SubType>UserControl</SubType>
@@ -108,8 +121,14 @@
     <EmbeddedResource Include="04-Control\UC_Introduction.resx">
       <DependentUpon>UC_Introduction.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="04-Control\UC_ReceivedDataDisplay.resx">
+      <DependentUpon>UC_ReceivedDataDisplay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="04-Control\UC_SelectUart.resx">
       <DependentUpon>UC_SelectUart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="04-Control\UC_Timer.resx">
+      <DependentUpon>UC_Timer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="04-Control\UC_UART.resx">
       <DependentUpon>UC_UART.cs</DependentUpon>

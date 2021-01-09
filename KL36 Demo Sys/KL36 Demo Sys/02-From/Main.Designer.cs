@@ -65,7 +65,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnConnection = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -182,20 +182,21 @@
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(144, 26);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem6.Text = "实验简介";
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(144, 26);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem7.Text = "演示视频";
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(144, 26);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem8.Text = "开始实验";
+            this.toolStripMenuItem8.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
             // 
             // toolStripMenuItem13
             // 
@@ -307,11 +308,10 @@
             // 
             this.panelControls.BackColor = System.Drawing.SystemColors.Control;
             this.panelControls.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControls.Location = new System.Drawing.Point(0, 114);
+            this.panelControls.Location = new System.Drawing.Point(0, 128);
             this.panelControls.Name = "panelControls";
-            this.panelControls.Size = new System.Drawing.Size(1182, 639);
+            this.panelControls.Size = new System.Drawing.Size(1182, 625);
             this.panelControls.TabIndex = 5;
-            this.panelControls.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.panelControls_ControlRemoved);
             // 
             // timer1
             // 
@@ -325,18 +325,18 @@
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.BtnConnection);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1182, 80);
+            this.panel1.Size = new System.Drawing.Size(1182, 98);
             this.panel1.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("黑体", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(244, 32);
+            this.label3.Location = new System.Drawing.Point(289, 32);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 24);
             this.label3.TabIndex = 1;
@@ -347,23 +347,23 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("黑体", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(86, 14);
+            this.label2.Location = new System.Drawing.Point(131, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(152, 28);
             this.label2.TabIndex = 0;
             this.label2.Text = "当前状态：";
             // 
-            // button1
+            // BtnConnection
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(1005, 22);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 44);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "连接设备";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.BtnConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnConnection.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnConnection.Location = new System.Drawing.Point(1005, 22);
+            this.BtnConnection.Name = "BtnConnection";
+            this.BtnConnection.Size = new System.Drawing.Size(131, 44);
+            this.BtnConnection.TabIndex = 1;
+            this.BtnConnection.Text = "连接设备";
+            this.BtnConnection.UseVisualStyleBackColor = true;
+            this.BtnConnection.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmMain
             // 
@@ -377,9 +377,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
             this.Text = "嵌入式实验演示系统  --基于KL36";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
-            this.Load += new System.EventHandler(this.FrmMain_Load);
-            this.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.FrmMain_ControlRemoved);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -422,7 +419,7 @@
         private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 系统演示系统ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 系统手册ToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnConnection;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;

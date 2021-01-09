@@ -10,31 +10,18 @@ using System.Windows.Forms;
 
 namespace KL36_Demo_Sys._04_Control
 {
-    public partial class UC_GPIO : UserControl
+    public partial class UC_ReceivedDataDisplay : UserControl
     {
         SCI sci;
+
         //委托,将从串口接收到的数据显示到接收框里面
         delegate void handleinterfaceupdatedelegate(Object textbox,
                                                     string text);
-
-        byte[] Confirm  = { 8,  (byte)'L', (byte)'E', (byte)'D' }; //确认指令，指定下面接收的命令是LED相关
-        byte[] RedON    = { 8,  (byte)'r', (byte)'e', (byte)'d' }; //点亮小灯指令
-        byte[] BlueON   = { 9,  (byte)'b', (byte)'l', (byte)'u', (byte)'e' };
-        byte[] GreenON  = { 10, (byte)'g', (byte)'r', (byte)'e', (byte)'e', (byte)'n' };
-        byte[] CyanON   = { 9,  (byte)'c', (byte)'y', (byte)'a', (byte)'n' };
-        byte[] VioletON = { 11, (byte)'v', (byte)'i', (byte)'o', (byte)'l', (byte)'e', (byte)'t' };
-        byte[] YellowON = { 11, (byte)'y', (byte)'e', (byte)'l', (byte)'l', (byte)'o', (byte)'w' };
-        byte[] WhiteON  = { 10, (byte)'w', (byte)'h', (byte)'i', (byte)'t', (byte)'e' };
-        byte[] LedOff   = { 8,  (byte)'o', (byte)'f', (byte)'f' };
-        public UC_GPIO()
+        public UC_ReceivedDataDisplay()
         {
             InitializeComponent();
             sci = new SCI(PublicVar.g_SCIComNum, PublicVar.g_SCIBaudRate);
-        }
-
-        private void UC_GPIO_Load(object sender, EventArgs e)
-        {
-            
+            SetInt();
         }
         public void SetInt()
         {
@@ -46,7 +33,7 @@ namespace KL36_Demo_Sys._04_Control
                 //设置每接收到1个字节中断1次
                 sci.SCIReceInt(1);
             }
-
+            
         }
         ///-----------------------------------------------------------------
         /// <summary>                                                       
@@ -74,9 +61,7 @@ namespace KL36_Demo_Sys._04_Control
             {
                 str = Encoding.GetEncoding("GB2312").GetString(PublicVar.g_ReceiveByteArray);
                 SCIUpdateRevtxtbox(textBox1, str);
-                sci.Close();
             }
-
         }
 
         ///-----------------------------------------------------------------
@@ -110,103 +95,9 @@ namespace KL36_Demo_Sys._04_Control
                 ((TextBox)textbox).ScrollToCaret();
             }
         }
-
-        private void BtnLedBlue_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-    
-            if (sci.SCIOpen())//串口打开成功
-            {
-                sci.SCISendFrameData(ref Confirm);
-                sci.SCISendFrameData(ref BlueON);
-                sci.Close();
-                SetInt();
-            }
-            
-        }
-
-        private void BtnLedGreen_Click(object sender, EventArgs e)
-        {
-            if (sci.SCIOpen())//串口打开成功
-            {
-                sci.SCISendFrameData(ref Confirm);
-                sci.SCISendFrameData(ref GreenON);
-                sci.Close();
-                SetInt();
-            }
-           
-        }
-
-        private void BtnLedCyan_Click(object sender, EventArgs e)
-        {
-            if (sci.SCIOpen())//串口打开成功
-            {
-                sci.SCISendFrameData(ref Confirm);
-                sci.SCISendFrameData(ref CyanON);
-                sci.Close();
-                SetInt();
-            }
-           
-        }
-
-        private void BtnLedYellow_Click(object sender, EventArgs e)
-        {
-            if (sci.SCIOpen())//串口打开成功
-            {
-                sci.SCISendFrameData(ref Confirm);
-                sci.SCISendFrameData(ref YellowON);
-                sci.Close();
-                SetInt();
-            }
-           
-        }
-
-        private void BtnLedViolet_Click(object sender, EventArgs e)
-        {
-            if (sci.SCIOpen())//串口打开成功
-            {
-                sci.SCISendFrameData(ref Confirm);
-                sci.SCISendFrameData(ref VioletON);
-                sci.Close();
-                SetInt();
-            }
-          
-        }
-
-        private void BtnLedWhite_Click(object sender, EventArgs e)
-        {
-            if (sci.SCIOpen())//串口打开成功
-            {
-                sci.SCISendFrameData(ref Confirm);
-                sci.SCISendFrameData(ref WhiteON);
-                sci.Close();
-                SetInt();
-            }
-           
-        }
-
-        private void BtnLedOff_Click(object sender, EventArgs e)
-        {
-            if (sci.SCIOpen())//串口打开成功
-            {
-                sci.SCISendFrameData(ref Confirm);
-                sci.SCISendFrameData(ref LedOff);
-                sci.Close();
-                SetInt();
-            }
 
         }
-
-        private void BtnLedRed_Click(object sender, EventArgs e)
-        {
-            if (sci.SCIOpen())//串口打开成功
-            {
-                sci.SCISendFrameData(ref Confirm);
-                sci.SCISendFrameData(ref RedON);
-                sci.Close();
-                SetInt();
-            }
-        }
-
-
     }
 }

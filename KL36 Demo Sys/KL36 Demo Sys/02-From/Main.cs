@@ -1,14 +1,6 @@
 ﻿using KL36_Demo_Sys._04_Control;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
 
 namespace KL36_Demo_Sys
 {
@@ -34,10 +26,10 @@ namespace KL36_Demo_Sys
             if (PublicVar.g_Uflag==1)
             {
                 this.label3.Text = "连接成功";
-                button1.Text = "已连接";
-                button1.Enabled = false;
+                BtnConnection.Text = "已连接";
+                BtnConnection.Enabled = false;
             }
-            if(count>=1 && PublicVar.g_Uflag==-1)
+            if(count>=2 && PublicVar.g_Uflag==-1)
             {
                 this.label3.Text = "连接失败";
             }
@@ -59,16 +51,6 @@ namespace KL36_Demo_Sys
             AddControlsToPanel(panelControls,usu);
             timer1.Start();
 
-        }
-
-        private void FrmMain_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void FrmMain_ControlRemoved(object sender, ControlEventArgs e)
-        {
- 
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -108,14 +90,11 @@ namespace KL36_Demo_Sys
             AddControlsToPanel(panelControls,uca);
         }
 
-        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        private void toolStripMenuItem8_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void panelControls_ControlRemoved(object sender, ControlEventArgs e)
-        {
-            
+            UC_Timer uct = new UC_Timer();
+            ClearPanel(panelControls);
+            AddControlsToPanel(panelControls, uct);
         }
     }
 }

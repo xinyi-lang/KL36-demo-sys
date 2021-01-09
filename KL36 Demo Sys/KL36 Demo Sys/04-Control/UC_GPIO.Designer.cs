@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.components = new System.ComponentModel.Container();
             this.BtnLedRed = new System.Windows.Forms.Button();
             this.BtnLedOff = new System.Windows.Forms.Button();
             this.BtnLedWhite = new System.Windows.Forms.Button();
@@ -38,31 +38,16 @@
             this.BtnLedGreen = new System.Windows.Forms.Button();
             this.BtnLedBlue = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlText;
-            this.panel1.Controls.Add(this.BtnLedRed);
-            this.panel1.Controls.Add(this.BtnLedOff);
-            this.panel1.Controls.Add(this.BtnLedWhite);
-            this.panel1.Controls.Add(this.BtnLedViolet);
-            this.panel1.Controls.Add(this.BtnLedYellow);
-            this.panel1.Controls.Add(this.BtnLedCyan);
-            this.panel1.Controls.Add(this.BtnLedGreen);
-            this.panel1.Controls.Add(this.BtnLedBlue);
-            this.panel1.Location = new System.Drawing.Point(232, 188);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(719, 101);
-            this.panel1.TabIndex = 0;
             // 
             // BtnLedRed
             // 
             this.BtnLedRed.Cursor = System.Windows.Forms.Cursors.Default;
             this.BtnLedRed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnLedRed.ForeColor = System.Drawing.Color.Red;
-            this.BtnLedRed.Location = new System.Drawing.Point(19, 14);
+            this.BtnLedRed.Location = new System.Drawing.Point(204, 343);
             this.BtnLedRed.Name = "BtnLedRed";
             this.BtnLedRed.Size = new System.Drawing.Size(75, 72);
             this.BtnLedRed.TabIndex = 8;
@@ -72,10 +57,10 @@
             // 
             // BtnLedOff
             // 
-            this.BtnLedOff.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BtnLedOff.BackColor = System.Drawing.SystemColors.Control;
             this.BtnLedOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnLedOff.ForeColor = System.Drawing.Color.Silver;
-            this.BtnLedOff.Location = new System.Drawing.Point(629, 14);
+            this.BtnLedOff.ForeColor = System.Drawing.Color.Maroon;
+            this.BtnLedOff.Location = new System.Drawing.Point(900, 343);
             this.BtnLedOff.Name = "BtnLedOff";
             this.BtnLedOff.Size = new System.Drawing.Size(79, 72);
             this.BtnLedOff.TabIndex = 1;
@@ -86,8 +71,8 @@
             // BtnLedWhite
             // 
             this.BtnLedWhite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnLedWhite.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnLedWhite.Location = new System.Drawing.Point(541, 14);
+            this.BtnLedWhite.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.BtnLedWhite.Location = new System.Drawing.Point(800, 343);
             this.BtnLedWhite.Name = "BtnLedWhite";
             this.BtnLedWhite.Size = new System.Drawing.Size(79, 72);
             this.BtnLedWhite.TabIndex = 2;
@@ -99,7 +84,7 @@
             // 
             this.BtnLedViolet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnLedViolet.ForeColor = System.Drawing.Color.Violet;
-            this.BtnLedViolet.Location = new System.Drawing.Point(453, 14);
+            this.BtnLedViolet.Location = new System.Drawing.Point(700, 343);
             this.BtnLedViolet.Name = "BtnLedViolet";
             this.BtnLedViolet.Size = new System.Drawing.Size(79, 72);
             this.BtnLedViolet.TabIndex = 3;
@@ -110,8 +95,8 @@
             // BtnLedYellow
             // 
             this.BtnLedYellow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnLedYellow.ForeColor = System.Drawing.Color.Yellow;
-            this.BtnLedYellow.Location = new System.Drawing.Point(365, 14);
+            this.BtnLedYellow.ForeColor = System.Drawing.Color.Orange;
+            this.BtnLedYellow.Location = new System.Drawing.Point(600, 343);
             this.BtnLedYellow.Name = "BtnLedYellow";
             this.BtnLedYellow.Size = new System.Drawing.Size(79, 72);
             this.BtnLedYellow.TabIndex = 4;
@@ -122,8 +107,8 @@
             // BtnLedCyan
             // 
             this.BtnLedCyan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnLedCyan.ForeColor = System.Drawing.Color.Cyan;
-            this.BtnLedCyan.Location = new System.Drawing.Point(277, 14);
+            this.BtnLedCyan.ForeColor = System.Drawing.Color.Teal;
+            this.BtnLedCyan.Location = new System.Drawing.Point(500, 343);
             this.BtnLedCyan.Name = "BtnLedCyan";
             this.BtnLedCyan.Size = new System.Drawing.Size(79, 72);
             this.BtnLedCyan.TabIndex = 5;
@@ -134,8 +119,8 @@
             // BtnLedGreen
             // 
             this.BtnLedGreen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnLedGreen.ForeColor = System.Drawing.Color.MediumAquamarine;
-            this.BtnLedGreen.Location = new System.Drawing.Point(189, 14);
+            this.BtnLedGreen.ForeColor = System.Drawing.Color.Turquoise;
+            this.BtnLedGreen.Location = new System.Drawing.Point(400, 343);
             this.BtnLedGreen.Name = "BtnLedGreen";
             this.BtnLedGreen.Size = new System.Drawing.Size(79, 72);
             this.BtnLedGreen.TabIndex = 6;
@@ -147,7 +132,7 @@
             // 
             this.BtnLedBlue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnLedBlue.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.BtnLedBlue.Location = new System.Drawing.Point(101, 14);
+            this.BtnLedBlue.Location = new System.Drawing.Point(300, 343);
             this.BtnLedBlue.Name = "BtnLedBlue";
             this.BtnLedBlue.Size = new System.Drawing.Size(79, 72);
             this.BtnLedBlue.TabIndex = 7;
@@ -166,26 +151,46 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "控制小灯";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(204, 166);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(775, 124);
+            this.textBox1.TabIndex = 9;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // UC_GPIO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.BtnLedBlue);
+            this.Controls.Add(this.BtnLedGreen);
+            this.Controls.Add(this.BtnLedCyan);
+            this.Controls.Add(this.BtnLedRed);
+            this.Controls.Add(this.BtnLedYellow);
+            this.Controls.Add(this.BtnLedOff);
+            this.Controls.Add(this.BtnLedWhite);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.BtnLedViolet);
             this.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.Name = "UC_GPIO";
             this.Size = new System.Drawing.Size(1182, 639);
             this.Load += new System.EventHandler(this.UC_GPIO_Load);
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BtnLedOff;
         private System.Windows.Forms.Button BtnLedWhite;
         private System.Windows.Forms.Button BtnLedViolet;
@@ -195,5 +200,7 @@
         private System.Windows.Forms.Button BtnLedBlue;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtnLedRed;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

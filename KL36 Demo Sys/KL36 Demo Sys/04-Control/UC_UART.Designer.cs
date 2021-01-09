@@ -33,7 +33,7 @@
             this.BtnSendData = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.CbSCISendType = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.DisplayInformation = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -97,14 +97,14 @@
             this.CbSCISendType.TabIndex = 4;
             this.CbSCISendType.Text = "请选择发送方式";
             // 
-            // label2
+            // DisplayInformation
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(92, 401);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 20);
-            this.label2.TabIndex = 5;
+            this.DisplayInformation.AutoSize = true;
+            this.DisplayInformation.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.DisplayInformation.Location = new System.Drawing.Point(92, 401);
+            this.DisplayInformation.Name = "DisplayInformation";
+            this.DisplayInformation.Size = new System.Drawing.Size(0, 20);
+            this.DisplayInformation.TabIndex = 5;
             // 
             // button1
             // 
@@ -156,7 +156,7 @@
             "字符串",
             "十进制",
             "十六进制"});
-            this.CbSCIReceive.Location = new System.Drawing.Point(623, 109);
+            this.CbSCIReceive.Location = new System.Drawing.Point(622, 104);
             this.CbSCIReceive.Name = "CbSCIReceive";
             this.CbSCIReceive.Size = new System.Drawing.Size(244, 26);
             this.CbSCIReceive.TabIndex = 10;
@@ -171,7 +171,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.DisplayInformation);
             this.Controls.Add(this.CbSCISendType);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnSendData);
@@ -180,7 +180,6 @@
             this.Name = "UC_UART";
             this.Size = new System.Drawing.Size(1182, 639);
             this.Load += new System.EventHandler(this.UC_UART_Load);
-            this.Leave += new System.EventHandler(this.UC_UART_Leave);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,7 +192,7 @@
         private System.Windows.Forms.Button BtnSendData;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox CbSCISendType;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label DisplayInformation;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;

@@ -58,12 +58,12 @@ void UART_User_Handler(void)
     {
     	uart_send_string(UART_User,"I am an KL36");                   //与上位机握手，确立通信关系
     	LCD_ShowString(60,50,BLACK,GRAY,(char *)"                     ");
-        LCD_ShowString(60,50,YELLOW,GRAY,(char *)"KL36 is connecting");
+        LCD_ShowString(60,50,YELLOW,GRAY,(char *)"Connecting。。。");
     }
     if(gcRecvBuf[0]==7&&strncmp((char *)(gcRecvBuf+1),"ok",2) == 0)
     {
     	LCD_ShowString(60,50,BLACK,GRAY, (char *)"                     ");
-        LCD_ShowString(60,50,YELLOW,GRAY,(char *)"KL36 is ready");
+        LCD_ShowString(60,50,YELLOW,GRAY,(char *)"Now,KL36 is ready");
     }
 
 //	if(gcRecvBuf[0]!=0xFF)
